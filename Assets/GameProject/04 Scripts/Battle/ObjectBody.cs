@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
+
+
 public abstract class ObjectBody : MonoBehaviour , IDamageable
 {
     // 정적 변수이기 때문에 1개만 존재
@@ -10,9 +14,10 @@ public abstract class ObjectBody : MonoBehaviour , IDamageable
 
     public RTSDB DB;
 
-    public enum Faction { Blue=0,Red,Green,Yellow};
-    public enum ObjectType {Unit,Building,Tile,None}
-    public enum UnitType { Melee,Range,Magic};
+    public enum Faction { Blue, Red, Yellow, Green, None };
+    public enum ObjType { Unit, Building, None }
+    public enum AttackType { Melee, Ranged }
+
     [Header("Object Stat")]
     public Faction faction;
     public float startHealth;

@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1386630146385344954}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1, z: 0.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -702,7 +702,7 @@ NavMeshAgent:
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
-  m_AngularSpeed: 120
+  m_AngularSpeed: 360
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
@@ -736,11 +736,9 @@ MonoBehaviour:
   destroyParticle: {fileID: 198304988862332634, guid: f1a1c60952b571c4fa485b0139d4a6b7, type: 3}
   selectedMarker: {fileID: 0}
   selected: 0
-  UnitID: 0
-  rtsDB: {fileID: 0}
   attackDamage: 10
   attackRange: 5
-  moveSpeed: 10
+  moveSpeed: 5
   searchRange: 30
   attackAudio: {fileID: 8300000, guid: 77e772ca9f67f924c939deb375502356, type: 3}
   attackTag: Blue
@@ -754,7 +752,7 @@ MonoBehaviour:
   isAttack: 0
   isMoving: 0
   isarrive: 1
-  waittime: 3
+  attackDelay: 1
   currentTarget: {fileID: 0}
   nextPos: {x: 0, y: 0, z: 0}
   randomPos: {x: 0, y: 0, z: 0}

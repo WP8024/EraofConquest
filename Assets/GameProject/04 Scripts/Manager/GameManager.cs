@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     private static int WIN=1,LOSE=0;
 
-
+    public GameObject blueBase, redBase;
 
     public static bool GameIsOver;
     public static int GameResult_win = 1,GameResult_Lose =0;//

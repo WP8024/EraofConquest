@@ -10,10 +10,6 @@ public class Unit : ObjectBody
 {
   
 
-   
-    public int UnitID;
-    public RTSDB rtsDB;
-
     [Header("Attack Status")]
     public float attackDamage;
     public float attackRange;
@@ -92,7 +88,10 @@ public class Unit : ObjectBody
 
        
     }
-
+    public void SetUP()
+    {
+       
+    }
 
     public override void Updated()
     {
@@ -119,28 +118,23 @@ public class Unit : ObjectBody
 
         if (OnArrive())
         {
-
-
             if (currentTarget==null)
             {
                 Debug.Log(currentTarget);
            
                 if (!findCurrentTarget())
                 {
-                    Debug.Log("!findCurrentTarget() pass");
                     nextPos = getRandomPosition();
                 }
             }
             else if (currentTarget != null)
             {
-                Debug.Log("isarrive() pass  currentTarget != null pass");
                 if (CheckInAttackrange(currentTarget))
                 {
-                    Debug.Log("CheckInAttackrange(currentTarget) pass");
                     if (!isAttack)
                     {
-                        
                         isAttack = true;
+                        transform.LookAt(currentTarget.transform);
                         Debug.Log("Attack call");
                         Attack(currentTarget);
                     }

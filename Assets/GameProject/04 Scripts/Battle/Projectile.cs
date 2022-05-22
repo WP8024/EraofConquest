@@ -66,6 +66,7 @@ public class Projectile : MonoBehaviour
                 Destroy(flashInstance, flashPsParts.main.duration);
             }
         }
+
     }
 
     public void SetTarget(ObjectBody _target)
@@ -80,8 +81,13 @@ public class Projectile : MonoBehaviour
 
     private void Update()
     {
+        if (target == null)
+        {
+            Destroy(gameObject);
+        }
         float moveDistance = speed;
         CheckCollisions(moveDistance);
+        transform.LookAt(target.transform);
         transform.Translate(Vector3.forward * moveDistance);
     }
 
@@ -105,10 +111,10 @@ public class Projectile : MonoBehaviour
             {
                 damagealbeObject.TakeHit(damage, hit);
             }
-            //print(hit.collider.gameObject.name);
+            print(hit.collider.gameObject.name);
             
         }
-        GameObject.Destroy(gameObject);
+        Destroy(gameObject);
     }
 
     void OnHitObject(Collider c)
@@ -124,7 +130,7 @@ public class Projectile : MonoBehaviour
             //print(hit.collider.gameObject.name);
            
         }
-        GameObject.Destroy(gameObject);
+        Destroy(gameObject);
     }
 
 

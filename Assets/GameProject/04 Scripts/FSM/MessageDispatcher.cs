@@ -20,7 +20,7 @@ public class MessageDispatcher
 	public void DispatchMessage(float delayTime, string senderName, string receiverName, string message)
 	{
 		// 수신자 정보 검색
-		ObjectBody receiver = ObjectDatabase.Instance.GetObjectFromID(receiverName);
+		ObjectBody receiver = Data.Instance.GetObjectFromID(receiverName);
 		// 존재하지 않는 에이전트이면 경고문 출력
 		if (receiver == null)
 		{
@@ -65,7 +65,7 @@ public class MessageDispatcher
 		{
 			if (entity.Key <= Time.time)
 			{
-				ObjectBody receiver = ObjectDatabase.Instance.GetObjectFromID(entity.Value.receiver);
+				ObjectBody receiver = Data.Instance.GetObjectFromID(entity.Value.receiver);
 
 				Discharge(receiver, entity.Value);  // receiver에게 전보 전송
 				prioritySD.Remove(entity.Key);      // 우선순위 Dictionary 자료구조에서 방금 보낸 전보 삭제

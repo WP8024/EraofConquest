@@ -15,9 +15,11 @@ public class StageManager : MonoBehaviour
     /// 맵 게임오브젝트 Map GameObject
     public GameObject StageSelectPrefabs;
 
+    public GameObject OptionMenuPrefabs;
+
     private StageNode lastMapNodeBattleLoaded;
 
-
+    bool option=false;
     // Start is called before the first frame update
     void Start()
     {
@@ -41,10 +43,15 @@ public class StageManager : MonoBehaviour
         StageSelectPrefabs.SetActive(true);
         ///스타트메뉴 비활성화 deactivate startmenu
         StartMenuPrefabs.SetActive(false);
+        OptionMenuPrefabs.SetActive(false);
     }
     public void OnOptionButtonClick()
     {
-
+        OptionMenuPrefabs.SetActive(true);
+    }
+    public void OnOpitonQuitButton()
+    {
+        OptionMenuPrefabs.SetActive(false);
     }
     public void ExitButtonClick()
     {
