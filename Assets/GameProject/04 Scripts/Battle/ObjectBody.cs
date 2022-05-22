@@ -44,6 +44,10 @@ public abstract class ObjectBody : MonoBehaviour , IDamageable
         health = startHealth;
         isDead = false;
         selected = false;
+        if (destroyParticle != null)
+        {
+
+        }
 
     }
 

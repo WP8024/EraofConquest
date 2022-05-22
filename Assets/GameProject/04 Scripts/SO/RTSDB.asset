@@ -311,3 +311,52 @@ MonoBehaviour:
   - branch: 3
     dialog: "\uAC04\uB2E8\uD55C \uC124\uBA85\uC774 \uC885\uB8CC \uB418\uC5C8\uC73C\uB2C8
       \uBCF8 \uC2A4\uD14C\uC774\uC9C0\uB85C \uB118\uC5B4\uAC00\uACA0\uC2B5\uB2C8\uB2E4."
+  PlayerDB:
+  - playerID: 1
+    money: 1000
+    maxUnit: 20
+    curUnit: 0
+    maxBuilding: 20
+    curBuilding: 0
+    up_MaxUnit: 1
+    up_MaxBuilding: 1
+    up_MeleeUnit: 1
+    up_RangeUnit: 1
+    up_MagicUnit: 1
+    up_CavalryUnit: 1
+  - playerID: 2
+    money: 1000
+    maxUnit: 20
+    curUnit: 0
+    maxBuilding: 20
+    curBuilding: 0
+    up_MaxUnit: 1
+    up_MaxBuilding: 1
+    up_MeleeUnit: 1
+    up_RangeUnit: 1
+    up_MagicUnit: 1
+    up_CavalryUnit: 1
+  - playerID: 3
+    money: 3000
+    maxUnit: 30
+    curUnit: 0
+    maxBuilding: 30
+    curBuilding: 0
+    up_MaxUnit: 2
+    up_MaxBuilding: 2
+    up_MeleeUnit: 2
+    up_RangeUnit: 2
+    up_MagicUnit: 2
+    up_CavalryUnit: 2
+  - playerID: 4
+    money: 4000
+    maxUnit: 30
+    curUnit: 0
+    maxBuilding: 30
+    curBuilding: 0
+    up_MaxUnit: 2
+    up_MaxBuilding: 2
+    up_MeleeUnit: 2
+    up_RangeUnit: 2
+    up_MagicUnit: 2
+    up_CavalryUnit: 2

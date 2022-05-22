@@ -17,6 +17,7 @@ public class StageManager : MonoBehaviour
 
     private StageNode lastMapNodeBattleLoaded;
 
+
     // Start is called before the first frame update
     void Start()
     {

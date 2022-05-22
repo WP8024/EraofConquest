@@ -104,6 +104,7 @@ public class Node : MonoBehaviour
 
 	public void SellBuilding()
 	{
+	
 		PlayerStats.Money += buildingBlueprint.GetSellAmount();
 
 		GameObject effect = (GameObject)Instantiate(buildManager.sellEffect, GetBuildPosition(), Quaternion.identity);

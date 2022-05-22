@@ -157,7 +157,7 @@ public class Building : ObjectBody
             int n = Random.RandomRange(0, units.Length);
             if (PlayerStats.Money >= 200)
             {
-                
+                PlayerStats.Money--;
                 var spawnPosition = spawnPoint.position;
                 //var spawnedUnit = GameObject.Instantiate(units[n], spawnPosition, spawnPoint.rotation) as GameObject;
 

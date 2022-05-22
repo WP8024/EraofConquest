@@ -4,28 +4,13 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-[SerializeField]
-public class GameData
-{
-    public int gold;
-    public int maxUnit;
-    public int maxBuilding;
-
-    public int upgradeMaxUnit;
-    public int upgrademaxBuilding;
-    public int upgradeturngold;
-
-    public int upgradeunitattack;
-    public int upgradebuilding;
-}
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     private static int WIN=1,LOSE=0;
-    
-    public GameData[] playersdata;
-    public PlayerData[] players;
+
+
 
     public static bool GameIsOver;
     public static int GameResult_win = 1,GameResult_Lose =0;//
@@ -57,7 +42,7 @@ public class GameManager : MonoBehaviour
         //Application.targetFrameRate = 60;
 
     }
-
+   
     void Start()
     {
         GameIsOver = false;

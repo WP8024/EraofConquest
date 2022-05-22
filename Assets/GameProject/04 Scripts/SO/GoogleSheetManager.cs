@@ -43,36 +43,7 @@ public class GoogleSheetManager : MonoBehaviour
         SetDialogDB(data3);
     }
 
-    IEnumerator DownloadUnitDB()
-    {
-        UnityWebRequest www = UnityWebRequest.Get(URL);
-        yield return www.SendWebRequest();
-
-        string data = www.downloadHandler.text;
-        print(data);
-
-        SetUnitDB(data);
-    }
-    IEnumerator DownloadBuildingDB()
-    {
-        UnityWebRequest www = UnityWebRequest.Get(URL2);
-        yield return www.SendWebRequest();
-
-        string data = www.downloadHandler.text;
-        print(data);
-
-        SetBuildingDB(data);
-    }
-
-    IEnumerator DownloadDialogDB()
-    {
-        UnityWebRequest www = UnityWebRequest.Get(URL3);
-        yield return www.SendWebRequest();
-
-        string data = www.downloadHandler.text;
-        print(data);
-        SetDialogDB(data);
-    }
+   
     void SetUnitDB(string tsv)
     {
         string[] row = tsv.Split('\n');

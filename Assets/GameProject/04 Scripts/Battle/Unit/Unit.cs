@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -27,13 +29,14 @@ public class Unit : ObjectBody
     public bool isAttack = false; //공격중인가 private예정
     public bool isMoving = false;
     public bool isarrive = true;
-    public float waittime = 3;
+    public float attackDelay = 1;
+    float timer = 0f;
 
     private bool goingToClickedPos;
     private float defaultStoppingDistance;
  
     [Header("target info")]
-    public Transform currentTarget; //타겟 캐릭터
+    public ObjectBody currentTarget; //타겟 캐릭터
     public Vector3 nextPos;   //이동 지점
     public Vector3 randomPos; //
     public Vector3 castleAttackPosition; //목표 베이스지점
@@ -49,17 +52,22 @@ public class Unit : ObjectBody
     /// <summary>
     /// 사용할지 안할지아직모름
     /// </summary>
-    //private NavMeshAgent agent;
+    private NavMeshAgent agent;
     private GameObject[] enemies;
     private GameObject healthbar;
 
     private UnitAnimation unitAnimation;
 
+    public override void Setup(ObjectBody obj, int id)
+    {
+        base.Setup(obj, id);
+    }
+
     public override void Awake()
     {
         base.Awake();
         unitAnimation = GetComponent<UnitAnimation>();
-
+        agent = GetComponent<NavMeshAgent>();
 
     }
 
@@ -76,6 +84,13 @@ public class Unit : ObjectBody
 
         moveRotation = transform.rotation;
         //StartCoroutine(Wait());
+        nextPos = getRandomPosition();
+
+        agent.stoppingDistance = attackRange - 2;
+        agent.speed = moveSpeed;
+
+
+       
     }
 
 
@@ -83,33 +98,72 @@ public class Unit : ObjectBody
     {
     }
 
+    IEnumerator Attack()
+    {
+        yield return new WaitForSeconds(attackDelay);
+    }
+
     public void Update()
     {
-        if (isarrive)
+        if (isAttack)
         {
+
+            timer += Time.deltaTime;
+            if (timer >= attackDelay)
+            {
+                Debug.Log(timer);
+                timer = 0f;
+                isAttack = false;
+            }
+        }
+
+        if (OnArrive())
+        {
+
+
             if (currentTarget==null)
             {
-                if (isAttack)
-                {
-                    isAttack = false;
-                }
+                Debug.Log(currentTarget);
+           
                 if (!findCurrentTarget())
                 {
-                    getRandomPosition();
+                    Debug.Log("!findCurrentTarget() pass");
+                    nextPos = getRandomPosition();
                 }
             }
             else if (currentTarget != null)
             {
-                Attack(transform);
+                Debug.Log("isarrive() pass  currentTarget != null pass");
+                if (CheckInAttackrange(currentTarget))
+                {
+                    Debug.Log("CheckInAttackrange(currentTarget) pass");
+                    if (!isAttack)
+                    {
+                        
+                        isAttack = true;
+                        Debug.Log("Attack call");
+                        Attack(currentTarget);
+                    }
+                }
             }
         }
         else
         {
-            if (nextPos == transform.position)
-            {
-                getRandomPosition();
-            }
+           
+            Debug.Log("Onarrive() fail");
             Move();
+            if (currentTarget == null)
+            {
+
+            }
+            if (currentTarget != null)
+            {
+     
+            }
+
+
+
+
         }
         
 
@@ -165,7 +219,7 @@ public class Unit : ObjectBody
         //if (isDead) { }
     }
 
-    public virtual bool inRange(Transform _target)
+    public virtual bool inRange(ObjectBody _target)
     {
         if (_target == null)
         {
@@ -184,24 +238,44 @@ public class Unit : ObjectBody
             }
         }
     }
+
+    public bool CheckInAttackrange(ObjectBody _target)
+    {
+        if(_target== null)
+        {
+            Debug.Log("CheckInAttackrange curtargel null");
+            return false;
+        }
+        else
+        {
+            if (attackRange >= Vector3.Distance(transform.position, _target.transform.position))
+                return true;
+            
+        }
+        return false;
+
+    }
     public void Move()
     {
-        if (OnArrived() || isAttack) return;
+        //if (OnArrive() || isAttack) return;
 
         moveRotation = CalculateRotation();
 
         if (currentTarget != null)
         {
+            agent.SetDestination(currentTarget.transform.position);
             ///move character towards target tile position
-            transform.position = Vector3.MoveTowards(transform.position, currentTarget.transform.position, moveSpeed * Time.deltaTime);
-            ///rotate character
-            transform.rotation = Quaternion.Lerp(this.transform.rotation, moveRotation, 0.1f);
+            //transform.position = Vector3.MoveTowards(transform.position, currentTarget.transform.position, moveSpeed * Time.deltaTime);
+            /////rotate character
+            //transform.rotation = Quaternion.Lerp(this.transform.rotation, moveRotation, 0.1f);
 
         }
         else if (currentTarget == null)
         {
-            transform.position = Vector3.MoveTowards(transform.position, nextPos, moveSpeed * Time.deltaTime);
-            transform.rotation = Quaternion.Lerp(transform.rotation, moveRotation, 0.1f);
+            agent.SetDestination(nextPos);
+            
+            //transform.position = Vector3.MoveTowards(transform.position, nextPos, moveSpeed * Time.deltaTime);
+            //transform.rotation = Quaternion.Lerp(transform.rotation, moveRotation, 0.1f);
         }
 
         if (!isMoving)
@@ -218,22 +292,73 @@ public class Unit : ObjectBody
             nextPos = pos;
         }
     }
-  
-    public void Attack(Transform _targetCharacter)
-    {
-        //if (isAttack)
-        //    return;
-        if (Vector3.Distance(transform.position, _targetCharacter.transform.position) > attackRange)
-        {
-            isarrive = false;
-            return;
-        }
-        //isAttack = true;
 
+
+
+    public bool OnArrive()
+    {
+        if (currentTarget == null)
+        {
+            if(Vector3.Distance(transform.position, nextPos)<attackRange)
+            {
+                isMoving = false;
+                isarrive = true;
+                unitAnimation.SetRun(false);
+                return true;
+            }
+
+        }
+        else if (currentTarget != null)
+        {
+            if (Vector3.Distance(transform.position, currentTarget.transform.position) < attackRange)
+            {
+                isMoving = false;
+                isarrive = true;
+                unitAnimation.SetRun(false);
+                return true;
+            }
+        }
+        isarrive = false;
+        return false;
+
+    }
+
+    
+
+    public void Attack(ObjectBody _targetCharacter)
+    {
+        //if (!isAttack)
+        //    return;
+        //if (Vector3.Distance(transform.position, _targetCharacter.transform.position) > attackRange)
+        //{
+        //    isarrive = false;
+        //    return;
+        //}
+        if (!isAttack) return;
+  
         //타겟 저장
         currentTarget = _targetCharacter;
         //공격 애니메이션 
         unitAnimation.SetAttack();
+
+        if (projectilePrefab == null)
+        {
+            currentTarget.TakeDamage(attackDamage);
+        }
+        else//발사체 존재시
+        {
+            Debug.Log("화살생성");
+            //등록된 발사체 생성
+            GameObject projectile = Instantiate(projectilePrefab);
+            projectile.transform.parent = gameObject.transform;
+            
+            //시작지점에서 발사체 위치
+            projectile.transform.position = projectileStart.transform.position;
+            //발사체에 타겟등록
+            projectile.GetComponent<Projectile>().Init(currentTarget);
+
+            currentTarget.TakeDamage(attackDamage);
+        }
     }
     public void Death()
     {
@@ -246,8 +371,16 @@ public class Unit : ObjectBody
     public bool findCurrentTarget()
     {
         if (currentTarget != null) { return true; }
-        currentTarget = GameObject.FindGameObjectWithTag(attackTag).transform;
+          
         
+        currentTarget = GameObject.FindGameObjectWithTag(attackTag).GetComponent<ObjectBody>();
+
+
+
+        if (inRange(currentTarget))
+        {
+           return true;
+        }
         //Collider[] hitCol = Physics.OverlapSphere(transform.position, searchRange, attacklayer);
         //foreach (Collider enemy in hitCol)
         //{
@@ -263,8 +396,10 @@ public class Unit : ObjectBody
         //        }
         //    }
         //}
+
         return false;
     }
+
     public Vector3 getRandomPosition()
     {
 
@@ -289,28 +424,7 @@ public class Unit : ObjectBody
         return transform.position;
     }
 
-    /// 목표지점에 도착하면
-    private bool OnArrived()
-    {
-        if (currentTarget != null)
-        {
-            if (Vector3.Distance(transform.position, currentTarget.transform.position) > attackRange) return false;
-        }
-        else
-        {
-            if (Vector3.Distance(transform.position, nextPos) > attackRange) return false;
-        }
 
-
-        isarrive = true;
-        isMoving = false;
-        nextPos = transform.position;
-        unitAnimation.SetRun(false);
-        // Debug.Log("OnArrived");
-
-
-        return true;
-    }
 
     private Quaternion CalculateRotation()
     {

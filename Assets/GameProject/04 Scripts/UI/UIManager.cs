@@ -5,7 +5,7 @@ using TMPro;
 
 public class UIManager : MonoBehaviour
 {
-    private PlayerStats stats;
+    
      
     [SerializeField]
     private GameObject UnitUpgradPanel;
@@ -15,19 +15,54 @@ public class UIManager : MonoBehaviour
     private GameObject OptionPanel;
 
 
-    [SerializeField] private TextMeshProUGUI playerUnit;
-    [SerializeField] private TextMeshProUGUI playerBuilding;
-    [SerializeField] private TextMeshProUGUI playerMoney;
+    [SerializeField] public TextMeshProUGUI playerUnitText;
+    [SerializeField] public TextMeshProUGUI playerBuildingText;
+    [SerializeField] public TextMeshProUGUI playerMoneyText;
+    [SerializeField] public TextMeshProUGUI enemyUnitText;
+    [SerializeField] public TextMeshProUGUI enemyBuildingText;
+    [SerializeField] public TextMeshProUGUI enemyMoneyText;
+    PlayerData playerdata,enemydata;
+  
+ 
+    int curUnit, maxUnit, curBuilding, maxBuilding, money;
+
+    
+    private void Awake()
+    {
+        //playerUnitText = GetComponent<TextMeshProUGUI>();
+        //playerBuildingText = GetComponent<TextMeshProUGUI>();
+        //playerMoneyText = GetComponent<TextMeshProUGUI>();
+
+        //enemyUnitText = GetComponent<TextMeshProUGUI>();
+        //enemyBuildingText = GetComponent<TextMeshProUGUI>();
+        //enemyMoneyText = GetComponent<TextMeshProUGUI>();
+
+
+    }
 
     void Start()
     {
         ConstructPanel.SetActive(true);
         UnitUpgradPanel.SetActive(false);
-
+       
+        playerdata = DataManager.instance.player;
+        enemydata = DataManager.instance.enemy;
 
     }
+   
 
+    public void Update()
+    {
+        Debug.Log(playerdata.curBuilding);
+        Debug.Log("curBuilding log"+ playerdata.curBuilding);
+        playerUnitText.text = playerdata.curUnit.ToString() + " / " + playerdata.maxUnit.ToString();
+        playerBuildingText.text = playerdata.curBuilding.ToString() + " / " + playerdata.maxBuilding.ToString();
+        playerMoneyText.text = playerdata.money.ToString();
 
+        enemyUnitText.text = enemydata.curUnit.ToString() + " / " + enemydata.maxUnit.ToString();
+        enemyBuildingText.text = enemydata.curBuilding.ToString() + " / " + enemydata.maxBuilding.ToString();
+        enemyMoneyText.text = enemydata.money.ToString();
+    }
 
 
     //Open whole settings menu when gear icon in top left corner is clicked

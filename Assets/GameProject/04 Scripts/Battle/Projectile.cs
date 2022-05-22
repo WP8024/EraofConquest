@@ -9,10 +9,10 @@ public class Projectile : MonoBehaviour
     public GameObject[] Detached;
 
     public LayerMask collisionMask;
-    public float speed = 10;
+    public float speed = 1;
     public Vector3 rotationOffset = new Vector3(0, 0, 0);
     public float damage = 10;
-    float lifetime = 3;
+    float lifetime = 2;
     public float hitOffset = 0f;
 
     private ObjectBody target;
@@ -130,41 +130,41 @@ public class Projectile : MonoBehaviour
 
 
     //https ://docs.unity3d.com/ScriptReference/Rigidbody.OnCollisionEnter.html
-    void OnCollisionEnter(Collision collision)
-    {
-        //Lock all axes movement and rotation
-        speed = 0;
+    //void OnCollisionEnter(Collision collision)
+    //{
+    //    //Lock all axes movement and rotation
+    //    speed = 0;
 
-        ContactPoint contact = collision.contacts[0];
-        Quaternion rot = Quaternion.FromToRotation(Vector3.up, contact.normal);
-        Vector3 pos = contact.point + contact.normal * hitOffset;
+    //    ContactPoint contact = collision.contacts[0];
+    //    Quaternion rot = Quaternion.FromToRotation(Vector3.up, contact.normal);
+    //    Vector3 pos = contact.point + contact.normal * hitOffset;
 
-        if (hit != null)
-        {
-            var hitInstance = Instantiate(hit, pos, rot);
-            if (rotationOffset != Vector3.zero) { hitInstance.transform.rotation = Quaternion.Euler(rotationOffset); }
-            else { hitInstance.transform.LookAt(contact.point + contact.normal); }
+    //    if (hit != null)
+    //    {
+    //        var hitInstance = Instantiate(hit, pos, rot);
+    //        if (rotationOffset != Vector3.zero) { hitInstance.transform.rotation = Quaternion.Euler(rotationOffset); }
+    //        else { hitInstance.transform.LookAt(contact.point + contact.normal); }
 
-            var hitPs = hitInstance.GetComponent<ParticleSystem>();
-            if (hitPs != null)
-            {
-                Destroy(hitInstance, hitPs.main.duration);
-            }
-            else
-            {
-                var hitPsParts = hitInstance.transform.GetChild(0).GetComponent<ParticleSystem>();
-                Destroy(hitInstance, hitPsParts.main.duration);
-            }
-        }
-        foreach (var detachedPrefab in Detached)
-        {
-            if (detachedPrefab != null)
-            {
-                detachedPrefab.transform.parent = null;
-            }
-        }
-        Destroy(gameObject);
-    }
+    //        var hitPs = hitInstance.GetComponent<ParticleSystem>();
+    //        if (hitPs != null)
+    //        {
+    //            Destroy(hitInstance, hitPs.main.duration);
+    //        }
+    //        else
+    //        {
+    //            var hitPsParts = hitInstance.transform.GetChild(0).GetComponent<ParticleSystem>();
+    //            Destroy(hitInstance, hitPsParts.main.duration);
+    //        }
+    //    }
+    //    foreach (var detachedPrefab in Detached)
+    //    {
+    //        if (detachedPrefab != null)
+    //        {
+    //            detachedPrefab.transform.parent = null;
+    //        }
+    //    }
+    //    Destroy(gameObject);
+    //}
 
 
 

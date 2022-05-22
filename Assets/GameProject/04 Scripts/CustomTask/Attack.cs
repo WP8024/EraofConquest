@@ -7,16 +7,20 @@ using BehaviorDesigner.Runtime.Tasks;
 public class Attack : Action
 {
     Unit unit;
-    Transform target;
+    ObjectBody target;
     public SharedGameObject targetGameObject;
     public SharedString stateName;
 
     private Animator animator;
     private GameObject prevGameObject;
+    public override void OnAwake()
+    {
+        target = targetGameObject.Value.GetComponent<ObjectBody>();
+    }
 
     public override void OnStart()
     {
-        target = targetGameObject.Value.GetComponent<Transform>();
+        //target = targetGameObject.Value.GetComponent<Transform>();
         var currentGameObject = GetDefaultGameObject(targetGameObject.Value);
         if (currentGameObject != prevGameObject)
         {
