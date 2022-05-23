@@ -53,7 +53,7 @@ public class Unit : ObjectBody
     private GameObject healthbar;
 
     private UnitAnimation unitAnimation;
-
+    private AudioSource audio;
     public override void Setup(ObjectBody obj, int id)
     {
         base.Setup(obj, id);
@@ -64,7 +64,7 @@ public class Unit : ObjectBody
         base.Awake();
         unitAnimation = GetComponent<UnitAnimation>();
         agent = GetComponent<NavMeshAgent>();
-
+        audio = GetComponent<AudioSource>();
     }
 
     public override void Start()
@@ -110,7 +110,6 @@ public class Unit : ObjectBody
             timer += Time.deltaTime;
             if (timer >= attackDelay)
             {
-                Debug.Log(timer);
                 timer = 0f;
                 isAttack = false;
             }
@@ -120,8 +119,6 @@ public class Unit : ObjectBody
         {
             if (currentTarget==null)
             {
-                Debug.Log(currentTarget);
-           
                 if (!findCurrentTarget())
                 {
                     nextPos = getRandomPosition();
@@ -329,12 +326,14 @@ public class Unit : ObjectBody
         //    return;
         //}
         if (!isAttack) return;
-  
         //타겟 저장
         currentTarget = _targetCharacter;
         //공격 애니메이션 
         unitAnimation.SetAttack();
-
+        if (attackAudio != null)
+        {
+            audio.PlayOneShot(attackAudio);
+        }
         if (projectilePrefab == null)
         {
             currentTarget.TakeDamage(attackDamage);
@@ -367,29 +366,29 @@ public class Unit : ObjectBody
         if (currentTarget != null) { return true; }
           
         
-        currentTarget = GameObject.FindGameObjectWithTag(attackTag).GetComponent<ObjectBody>();
-
-
+       // currentTarget = GameObject.FindGameObjectWithTag(attackTag).GetComponent<ObjectBody>();
 
         if (inRange(currentTarget))
         {
-           return true;
+            return true;
         }
-        //Collider[] hitCol = Physics.OverlapSphere(transform.position, searchRange, attacklayer);
-        //foreach (Collider enemy in hitCol)
-        //{
-        //    //if (enemy.tag == attackBaseTag || enemy.tag == attackTag)
-        //    if (enemy.tag == attackTag)
-        //    {
-        //        if (!currentTarget || (currentTarget && (Vector3.Distance(transform.position, currentTarget.transform.position) > Vector3.Distance(transform.position, enemy.transform.position))))
-        //        {
-        //            currentTarget = enemy.GetComponent<GameObject>().transform;
-        //            nextPos = currentTarget.transform.position;
-        //            isarrive = false;
-        //            return true;
-        //        }
-        //    }
-        //}
+
+
+        Collider[] hitCol = Physics.OverlapSphere(transform.position, searchRange, attacklayer);
+        foreach (Collider enemy in hitCol)
+        {
+            //if (enemy.tag == attackBaseTag || enemy.tag == attackTag)
+            if (enemy.tag == attackTag)
+            {
+                if (!currentTarget || (currentTarget && (Vector3.Distance(transform.position, currentTarget.transform.position) > Vector3.Distance(transform.position, enemy.transform.position))))
+                {
+                    currentTarget = enemy.GetComponent<ObjectBody>();
+                    nextPos = currentTarget.transform.position;
+                    isarrive = false;
+                    return true;
+                }
+            }
+        }
 
         return false;
     }

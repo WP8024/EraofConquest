@@ -15,7 +15,7 @@ public class Building : ObjectBody
 
     #region 공격
     public Transform muzzle;        //발사체 생성위치
-    public Projectile bulletPrefab; //발사체 프리팹
+    public Projectile projectilePrefab; //발사체 프리팹
     public float msBetweenShots = 100;//발사체의 연사속도
     public float muzzleVelocity = 35; //발사체의 발사될때 속도 
 
@@ -34,6 +34,13 @@ public class Building : ObjectBody
     public bool isSpawner = false;
     public bool isAttackable = false;
 
+    private DataManager datamanager;
+
+    public override void Awake()
+    {
+        base.Awake();
+    }
+
     public override void Start()
     {
         base.Start();
@@ -41,17 +48,17 @@ public class Building : ObjectBody
         {
             isSpawner = true;
         }
+        if (projectilePrefab != null)
+        {
+            isAttackable = true;
+        }
 
         // StartCoroutine(Search());
     }
 
-
     public override void Updated()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            Debug.Log("mouse click" + Input.mousePosition);
-        }
+
     }
 
     public void Update()
@@ -81,13 +88,13 @@ public class Building : ObjectBody
 
     IEnumerator Shoot()
     {
-        if (bulletPrefab != null)
+        if (isAttackable)
         {
 
             if (Time.time > nextShotTime)
             {
                 nextShotTime = Time.time + msBetweenShots / 1000;
-                Projectile newProjectile = Instantiate(bulletPrefab, muzzle.position, muzzle.rotation) as Projectile; //타입이 안맞는다는 메세지가 뜨는경우 as Projectile 추가
+                Projectile newProjectile = Instantiate(projectilePrefab, muzzle.position, muzzle.rotation) as Projectile; //타입이 안맞는다는 메세지가 뜨는경우 as Projectile 추가
                 newProjectile.SetSpeed(muzzleVelocity);
             }
 
@@ -157,7 +164,10 @@ public class Building : ObjectBody
             int n = Random.RandomRange(0, units.Length);
             if (PlayerStats.Money >= 200)
             {
-                PlayerStats.Money--;
+                if (transform.tag == "Blue")
+                {
+                    datamanager.player.money -= units[n].GetComponent<Unit>().price;
+                }
                 var spawnPosition = spawnPoint.position;
                 //var spawnedUnit = GameObject.Instantiate(units[n], spawnPosition, spawnPoint.rotation) as GameObject;
 
@@ -167,12 +177,11 @@ public class Building : ObjectBody
 
                 // store the spawned unit in a list so we can reference it later
                 //units.Add(spawnedUnit);
-
+                return true;
 
             }
+            return false;
+
         }
-
-        return true;
-
     }
 }

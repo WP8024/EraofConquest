@@ -1,18 +1,24 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using BehaviorDesigner.Runtime.Tasks;
+using BehaviorDesigner.Runtime;
 
-public class Income : MonoBehaviour
+[TaskCategory("Custom")]
+public class Income : Action
 {
+    DataManager datamanaer;
+    private Building building;
     // Start is called before the first frame update
-    void Start()
+
+    public override  void OnAwake()
     {
+        building = gameObject.GetComponent<Building>();
         
     }
 
     // Update is called once per frame
-    void Update()
+    public override TaskStatus OnUpdate()
     {
-        
+        datamanaer.player.money += building.turngold;
+        return TaskStatus.Success;
     }
 }

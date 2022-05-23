@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using BehaviorDesigner.Runtime.Tasks;
 using BehaviorDesigner.Runtime;
-
+[TaskCategory("Custom")]
 public class FindCurrentTarget :Action
 {
     public SharedTransform target;
@@ -21,8 +21,8 @@ public class FindCurrentTarget :Action
         targetTag = (transform.tag == "Blue") ? "Red" : "Blue";
         targetTransform = GameObject.FindGameObjectWithTag(targetTag).transform;
         target = targetTransform;
+        if (target == null) return TaskStatus.Failure;
+       
         return TaskStatus.Success;
-
-
     }
 }

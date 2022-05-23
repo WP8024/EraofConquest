@@ -36,6 +36,7 @@ public class Projectile : MonoBehaviour
             }
             
         }
+        transform.LookAt(target.transform);
         Destroy(gameObject, lifetime);
 
     }
@@ -69,9 +70,9 @@ public class Projectile : MonoBehaviour
 
     }
 
-    public void SetTarget(ObjectBody _target)
+    public void SetTarget(Transform _target)
     {
-        target = _target;
+        target = _target.GetComponent<ObjectBody>();
     }
 
     public void SetSpeed(float newspeed)
@@ -81,16 +82,19 @@ public class Projectile : MonoBehaviour
 
     private void Update()
     {
+
         if (target == null)
         {
             Destroy(gameObject);
         }
-        float moveDistance = speed;
-        CheckCollisions(moveDistance);
-        transform.LookAt(target.transform);
-        transform.Translate(Vector3.forward * moveDistance);
+        else
+        {
+            float moveDistance = speed;
+            CheckCollisions(moveDistance);
+            transform.LookAt(target.transform);
+            transform.Translate(Vector3.forward * moveDistance);
+        }
     }
-
     void CheckCollisions(float moveDistance)
     {
         Ray ray = new Ray(transform.position, transform.forward);
