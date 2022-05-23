@@ -136,6 +136,7 @@ public class StageManager : MonoBehaviour
         ///스테이지 선택 맵 활성화 show map
         map.SetVisibility(true);
 
+        LoadingSceneController.LoadScene("Title Scene");
         ///전투씬 비활성화 unload battle scene
         SceneManager.UnloadSceneAsync(lastMapNodeBattleLoaded.sceneNameToLoad);
     }

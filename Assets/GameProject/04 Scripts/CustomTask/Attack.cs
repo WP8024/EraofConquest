@@ -8,15 +8,17 @@ using BehaviorDesigner.Runtime.Tasks;
 public class Attack : Action
 {
     Unit unit;
-    ObjectBody target;
+    ObjectBody objbody;
     public SharedGameObject targetGameObject;
     public SharedString stateName;
+    public SharedTransform target;
 
     private Animator animator;
     private GameObject prevGameObject;
     public override void OnAwake()
     {
-        target = targetGameObject.Value.GetComponent<ObjectBody>();
+        target = targetGameObject.Value.GetComponent<Transform>();
+        objbody = target.Value.GetComponent<ObjectBody>();
     }
 
     public override void OnStart()
@@ -38,7 +40,7 @@ public class Attack : Action
             return TaskStatus.Failure;
         }
 
-        unit.Attack(target);
+        unit.Attack(objbody);
         return TaskStatus.Success;
 
     }

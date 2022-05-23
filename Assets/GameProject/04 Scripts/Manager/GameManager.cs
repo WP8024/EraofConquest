@@ -10,15 +10,15 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     private static int WIN=1,LOSE=0;
 
-    public GameObject blueBase, redBase;
+    public GameObject playerBase, TargetBase;
 
     public static bool GameIsOver;
     public static int GameResult_win = 1,GameResult_Lose =0;//
 
 
     #region UI
-    private GameObject gameOverUI;
-    private GameObject completeLevelUI;
+    public GameObject gameOverUI;
+    public GameObject completeLevelUI;
     public TextMeshProUGUI timerText;
     #endregion
 
@@ -30,8 +30,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     Slider audioSlider;
 
-    GameObject TargetBase;
-    GameObject playerBase;
+
 
     private void Awake()
     {
@@ -65,28 +64,32 @@ public class GameManager : MonoBehaviour
         if (TargetBase==null)
         {
             completeLevelUI.SetActive(true);
-            Time.timeScale = 0;
+            
             WinLevel();
 
         }
         if (playerBase == null)
         {
             gameOverUI.SetActive(true);
-            Time.timeScale = 0;
+            
             EndGame();
         }
     }
     public void EndGame()
     {
+
         GameIsOver = true;
         gameOverUI.SetActive(true);
+        LoadingSceneController.LoadScene("Title Scene");
         StageManager.instance.OnBattleComplete(LOSE);
     }
 
     public void WinLevel()
     {
+
         GameIsOver = true;
         completeLevelUI.SetActive(true);
+        LoadingSceneController.LoadScene("Title Scene");
         StageManager.instance.OnBattleComplete(WIN);
     }
 }

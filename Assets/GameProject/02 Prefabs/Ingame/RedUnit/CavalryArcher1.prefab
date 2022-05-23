@@ -1357,7 +1357,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 3
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -1408,8 +1408,6 @@ MonoBehaviour:
   destroyParticle: {fileID: 198304988862332634, guid: f1a1c60952b571c4fa485b0139d4a6b7, type: 3}
   selectedMarker: {fileID: 0}
   selected: 0
-  UnitID: 0
-  rtsDB: {fileID: 0}
   attackDamage: 10
   attackRange: 5
   moveSpeed: 10
@@ -1426,7 +1424,7 @@ MonoBehaviour:
   isAttack: 0
   isMoving: 0
   isarrive: 1
-  waittime: 3
+  attackDelay: 1
   currentTarget: {fileID: 0}
   nextPos: {x: 0, y: 0, z: 0}
   randomPos: {x: 0, y: 0, z: 0}
