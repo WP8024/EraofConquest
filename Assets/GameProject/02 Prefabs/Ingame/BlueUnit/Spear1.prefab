@@ -785,7 +785,7 @@ Animator:
   m_GameObject: {fileID: 3137846327226191702}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: d0faea61d5b74ce468c1018e4ab1f2a7, type: 3}
-  m_Controller: {fileID: 22100000, guid: 00cd678258553ee4eaed8263c42f2396, type: 2}
+  m_Controller: {fileID: 9100000, guid: 5d790a7a984c22b448e8e14bfe739e0e, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -954,7 +954,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 20
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0

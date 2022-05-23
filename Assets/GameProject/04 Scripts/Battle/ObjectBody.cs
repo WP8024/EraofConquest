@@ -23,6 +23,7 @@ public abstract class ObjectBody : MonoBehaviour , IDamageable
     public float startHealth;
     public float health;
     public int price;
+    //public float attackDamage;
     public AudioClip SpawnSound;
     public AudioClip destroySound;
 

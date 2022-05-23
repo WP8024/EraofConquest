@@ -460,7 +460,6 @@ GameObject:
   - component: {fileID: 3762446102410239449}
   - component: {fileID: 3762446102400463425}
   - component: {fileID: 1020474230}
-  - component: {fileID: 1020474229}
   - component: {fileID: 1020474231}
   m_Layer: 0
   m_Name: CavalrySword1
@@ -520,41 +519,6 @@ CapsuleCollider:
   m_Height: 2.5
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
---- !u!114 &1020474229
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3762446102409805881}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 603c91a669519df41b6b6a61bd0bfc38, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 0
-  maxHP: 0
-  currentHP: 0
-  attackDamage: 0
-  attackRange: 0
-  searchRange: 0
-  attackTag: 
-  attackBaseTag: 
-  attacklayer:
-    serializedVersion: 2
-    m_Bits: 0
-  groundlayer:
-    serializedVersion: 2
-    m_Bits: 0
-  isAttack: 0
-  isDead: 0
-  isMoving: 0
-  isarrive: 1
-  waittime: 3
-  target: {fileID: 0}
-  nextpos: {x: 0, y: 0, z: 0}
-  projectilePrefab: {fileID: 0}
-  projectileStart: {fileID: 0}
 --- !u!195 &1020474231
 NavMeshAgent:
   m_ObjectHideFlags: 0

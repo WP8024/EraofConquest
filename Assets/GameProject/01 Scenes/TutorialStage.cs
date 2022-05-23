@@ -17,6 +17,8 @@ public class TutorialStage : MonoBehaviour
     public GameObject Group2;
     public GameObject Group3;
 
+    bool test1=false;
+
     private IEnumerator Start()
     {
         Group1.SetActive(false);
@@ -24,6 +26,11 @@ public class TutorialStage : MonoBehaviour
         Group3.SetActive(false);
 
         yield return new WaitUntil(() => dialogSystem01.UpdateDialog());
+
+
+        while (test1)
+        {
+        }
 
         Group1.SetActive(true);
 

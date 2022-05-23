@@ -6,8 +6,8 @@ using BehaviorDesigner.Runtime;
 
 //public enum UnitState { Idle, Walk, Run, Attack, TakeDamage, Death, Charge, Cast }
 
-[RequireComponent (typeof (NavMeshAgent))]
-public class Unit : ObjectBody
+[RequireComponent(typeof(NavMeshAgent))]
+public class B_Unit : ObjectBody
 {
     private Behavior behavior;
 
@@ -31,7 +31,7 @@ public class Unit : ObjectBody
 
     private bool goingToClickedPos;
     private float defaultStoppingDistance;
- 
+
     [Header("target info")]
     public ObjectBody currentTarget; //타겟 캐릭터
     public Vector3 nextPos;   //이동 지점
@@ -44,7 +44,7 @@ public class Unit : ObjectBody
     public GameObject projectileStart;
     //캐릭터 이동방향
     private Quaternion moveRotation;
-    
+
 
     /// <summary>
     /// 사용할지 안할지아직모름
@@ -71,7 +71,7 @@ public class Unit : ObjectBody
     public override void Start()
     {
         base.Start();
-        
+
         //시점 고정이 아니라 캐릭터 머리위에 배치해도 시야각에 따라 달라짐
         //일단은 보류
         //health = transform.Find("Health").gameObject;
@@ -87,12 +87,11 @@ public class Unit : ObjectBody
         agent.speed = moveSpeed;
 
 
-       
+
     }
     public void SetUP()
     {
 
-        attackDamage = attackDamage + (DataManager.instance.player.up_CavalryUnit);
     }
 
     public override void Updated()
@@ -119,15 +118,13 @@ public class Unit : ObjectBody
 
         if (OnArrive())
         {
-            if (currentTarget==null)
+            if (currentTarget == null)
             {
                 if (!findCurrentTarget())
                 {
                     nextPos = getRandomPosition();
                     if (!agent.hasPath)
                     {
-                        isMoving = true;
-                        unitAnimation.SetRun(true);
                         agent.SetDestination(nextPos);
                     }
                 }
@@ -148,13 +145,13 @@ public class Unit : ObjectBody
         }
         else
         {
-           
+
             Debug.Log("Onarrive() fail");
             Move();
 
 
         }
-        
+
 
 
 
@@ -230,7 +227,7 @@ public class Unit : ObjectBody
 
     public bool CheckInAttackrange(ObjectBody _target)
     {
-        if(_target== null)
+        if (_target == null)
         {
             Debug.Log("CheckInAttackrange curtargel null");
             return false;
@@ -239,7 +236,7 @@ public class Unit : ObjectBody
         {
             if (attackRange >= Vector3.Distance(transform.position, _target.transform.position))
                 return true;
-            
+
         }
         return false;
 
@@ -262,7 +259,7 @@ public class Unit : ObjectBody
         else if (currentTarget == null)
         {
             agent.SetDestination(nextPos);
-            
+
             //transform.position = Vector3.MoveTowards(transform.position, nextPos, moveSpeed * Time.deltaTime);
             //transform.rotation = Quaternion.Lerp(transform.rotation, moveRotation, 0.1f);
         }
@@ -288,7 +285,7 @@ public class Unit : ObjectBody
     {
         if (currentTarget == null)
         {
-            if(Vector3.Distance(transform.position, nextPos)<attackRange)
+            if (Vector3.Distance(transform.position, nextPos) < attackRange)
             {
                 Debug.Log("Vector3.Distance(transform.position, nextPos)<attackRange :" + Vector3.Distance(transform.position, nextPos));
                 isMoving = false;
@@ -313,7 +310,7 @@ public class Unit : ObjectBody
 
     }
 
-    
+
 
     public void Attack(ObjectBody _targetCharacter)
     {
@@ -344,7 +341,7 @@ public class Unit : ObjectBody
             //등록된 발사체 생성
             GameObject projectile = Instantiate(projectilePrefab);
             projectile.transform.parent = gameObject.transform;
-            
+
             //시작지점에서 발사체 위치
             projectile.transform.position = projectileStart.transform.position;
             //발사체에 타겟등록
@@ -364,9 +361,9 @@ public class Unit : ObjectBody
     public bool findCurrentTarget()
     {
         if (currentTarget != null) { return true; }
-          
-        
-       // currentTarget = GameObject.FindGameObjectWithTag(attackTag).GetComponent<ObjectBody>();
+
+
+        // currentTarget = GameObject.FindGameObjectWithTag(attackTag).GetComponent<ObjectBody>();
 
         if (inRange(currentTarget))
         {
@@ -404,7 +401,7 @@ public class Unit : ObjectBody
         }
         randomPos = transform.position + Random.insideUnitSphere * searchRange;
         NavMeshHit hit;
-        if(NavMesh.SamplePosition(randomPos,out hit, 1.0f, NavMesh.AllAreas))
+        if (NavMesh.SamplePosition(randomPos, out hit, 1.0f, NavMesh.AllAreas))
         {
             return hit.position;
         }
@@ -455,18 +452,18 @@ public class Unit : ObjectBody
     }
 
 
-    //public void TakeDamage(Unit _attackerCharacter)
-    //{
-    //    //Debug.Log("TakeDamage" + _attackerCharacter.attackDamage);
-    //    health -= _attackerCharacter.attackDamage;
+    public void TakeDamage(Unit _attackerCharacter)
+    {
+        //Debug.Log("TakeDamage" + _attackerCharacter.attackDamage);
+        health -= _attackerCharacter.attackDamage;
 
-    //    //this.GetComponent<CharacterAnimationEx>().SetDamage(true);
-    //    if (health <= 0)
-    //    {
-    //        Death();
-    //    }
+        //this.GetComponent<CharacterAnimationEx>().SetDamage(true);
+        if (health <= 0)
+        {
+            Death();
+        }
 
-    //}
+    }
     //public void OnAttack()
     //{
     //    if (currentTarget == null)
@@ -474,7 +471,7 @@ public class Unit : ObjectBody
     //        unitAnimation.SetAttack(false);
     //        return;
     //    }
-    
+
     //    if (projectilePrefab == null)
     //    {
     //        currentTarget.TakeDamage(attackDamage);
@@ -495,14 +492,14 @@ public class Unit : ObjectBody
 
     //public void OnAttackFinish()
     //{
-        
+
     //    if (currentTarget == null)
     //    {
     //        unitAnimation.SetAttack(false);
     //        return;
     //    }
-    
-        
+
+
     //}
     public void OnDeathFinish()
     {
