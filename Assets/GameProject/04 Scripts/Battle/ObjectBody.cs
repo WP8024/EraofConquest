@@ -53,7 +53,10 @@ public abstract class ObjectBody : MonoBehaviour , IDamageable
         {
 
         }
-
+        if (SpawnSound != null)
+        {
+            audioSource.PlayOneShot(SpawnSound);
+        }
     }
 
 

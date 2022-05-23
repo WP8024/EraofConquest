@@ -6,7 +6,7 @@ AudioMixerGroupController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: GameSE
+  m_Name: SFX
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: fab1e0b4f1b75cd45b200842d09a1562
   m_Children: []
@@ -53,7 +53,11 @@ AudioMixerController:
   m_SuspendThreshold: -80
   m_EnableSuspend: 1
   m_UpdateMode: 0
-  m_ExposedParameters: []
+  m_ExposedParameters:
+  - guid: 66c31a15ba683ae4cbff9f81d950ca8b
+    name: BGMVolume
+  - guid: a412d0f6aae124b47a81a79467a153af
+    name: SFXVolume
   m_AudioMixerGroupViews:
   - guids:
     - 2e4a845dd5b521449999516d6a722ab9
@@ -108,7 +112,7 @@ AudioMixerSnapshotController:
   m_SnapshotID: 37940ab575f4eb34386b0a121cf51f90
   m_FloatValues:
     66c31a15ba683ae4cbff9f81d950ca8b: -7.4
-    a412d0f6aae124b47a81a79467a153af: -21.2
+    a412d0f6aae124b47a81a79467a153af: 3.5924087
     121aa3576e8f6034c852311e43724cc2: 1.05
     d0e5a09ad1ed3dc4fadb2e79f57cf9ee: -4.1
   m_TransitionOverrides: {}

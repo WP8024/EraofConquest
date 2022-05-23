@@ -3628,6 +3628,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d853c5ba406ab2449b57a72ebcf7e84b, type: 3}
+--- !u!1 &73653780 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8154928690430433348, guid: dc36f8460c7eb214fbcc9da84e8fe3db, type: 3}
+  m_PrefabInstance: {fileID: 2129922036}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &73895704
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22826,6 +22831,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4118625147745848, guid: c291e80b4e3bd6940a732e6027a8d72b, type: 3}
   m_PrefabInstance: {fileID: 1147855558}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &560100091 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8154928690366116945, guid: dc36f8460c7eb214fbcc9da84e8fe3db, type: 3}
+  m_PrefabInstance: {fileID: 2129922036}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &561038363
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -29591,10 +29601,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90161ed71eb10ce439b69a038662b4ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerBase: {fileID: 0}
-  TargetBase: {fileID: 0}
-  gameOverUI: {fileID: 0}
-  completeLevelUI: {fileID: 0}
+  playerBase: {fileID: 1343659446}
+  TargetBase: {fileID: 202585504}
+  gameOverUI: {fileID: 73653780}
+  completeLevelUI: {fileID: 560100091}
   timerText: {fileID: 0}
   _audioSource: {fileID: 0}
   audioSlider: {fileID: 0}

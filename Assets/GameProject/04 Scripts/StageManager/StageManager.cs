@@ -82,8 +82,10 @@ public class StageManager : MonoBehaviour
         ///∏ º±≈√»≠∏È º˚±Ë hide map
         map.SetVisibility(false);
 
+        Debug.Log("LoadNewBattle Scene name: " + stageNode.sceneNameToLoad);
         ///πË∆≤æ¿ ∫“∑Øø» lode battle scene
-        SceneManager.LoadScene(stageNode.sceneNameToLoad, LoadSceneMode.Additive);
+        //SceneManager.LoadScene(stageNode.sceneNameToLoad, LoadSceneMode.Additive);
+        LoadingSceneController.LoadScene(stageNode.sceneNameToLoad);
     }
 
 
@@ -91,7 +93,7 @@ public class StageManager : MonoBehaviour
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         ///æ¿ »∞º∫»≠ set to active scene
-        SceneManager.SetActiveScene(scene);
+        //SceneManager.SetActiveScene(scene);
 
         ///≈¨∑°Ω∫µÈ √ ±‚»≠ Init classes
         //GameObject.Find("GameManager").GetComponent<GameManager>().Init();
@@ -138,6 +140,6 @@ public class StageManager : MonoBehaviour
 
         LoadingSceneController.LoadScene("Title Scene");
         ///¿¸≈ıæ¿ ∫Ò»∞º∫»≠ unload battle scene
-        SceneManager.UnloadSceneAsync(lastMapNodeBattleLoaded.sceneNameToLoad);
+        //SceneManager.UnloadSceneAsync(lastMapNodeBattleLoaded.sceneNameToLoad);
     }
 }

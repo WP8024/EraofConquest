@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using BehaviorDesigner.Runtime;
 
 //public enum UnitState { Idle, Walk, Run, Attack, TakeDamage, Death, Charge, Cast }
 
 [RequireComponent (typeof (NavMeshAgent))]
 public class Unit : ObjectBody
 {
-  
+    private Behavior behavior;
 
     [Header("Attack Status")]
     public float attackDamage;
@@ -337,6 +338,7 @@ public class Unit : ObjectBody
         unitAnimation.SetAttack();
         if (attackAudio != null)
         {
+            audio.Stop();
             audio.PlayOneShot(attackAudio);
         }
         if (projectilePrefab == null)

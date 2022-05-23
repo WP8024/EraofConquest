@@ -11,6 +11,8 @@ public class Node : MonoBehaviour
 	public Color blue, red;
 	public Vector3 positionOffset;
 
+	public bool structmode = false;
+
 	[HideInInspector]
 	public GameObject building;
 	[HideInInspector]
@@ -55,6 +57,11 @@ public class Node : MonoBehaviour
 		BuildTurret(buildManager.GetTurretToBuild());
 		building = null;
 	}
+
+	void OnClickButoon()
+    {
+
+    }
 
 	void BuildTurret(BuildingBlueprint blueprint)
 	{
