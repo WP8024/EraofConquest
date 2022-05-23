@@ -10,8 +10,9 @@ public class WithinDistance : Conditional
     public float magnitude;
     public bool lineOfSight;
     public Transform[] targets;
-    public string targetTag;
+
     public SharedTransform target;
+    public SharedString targetTag;
 
     // true if we obtained the targets through the targetTag
     private bool dynamicTargets;
@@ -30,7 +31,7 @@ public class WithinDistance : Conditional
         // if targets is null then find all of the targets using the targetTag
         if (targets == null || targets.Length == 0)
         {
-            var gameObjects = GameObject.FindGameObjectsWithTag(targetTag);
+            var gameObjects = GameObject.FindGameObjectsWithTag(targetTag.Value);
             targets = new Transform[gameObjects.Length];
             for (int i = 0; i < gameObjects.Length; ++i)
             {

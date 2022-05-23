@@ -122,6 +122,10 @@ public class Unit : ObjectBody
                 if (!findCurrentTarget())
                 {
                     nextPos = getRandomPosition();
+                    if (!agent.hasPath)
+                    {
+                        agent.SetDestination(nextPos);
+                    }
                 }
             }
             else if (currentTarget != null)
@@ -292,6 +296,7 @@ public class Unit : ObjectBody
         {
             if(Vector3.Distance(transform.position, nextPos)<attackRange)
             {
+                Debug.Log("Vector3.Distance(transform.position, nextPos)<attackRange :" + Vector3.Distance(transform.position, nextPos));
                 isMoving = false;
                 isarrive = true;
                 unitAnimation.SetRun(false);
@@ -402,17 +407,24 @@ public class Unit : ObjectBody
             // Debug.Log(nextpos);
             return nextPos;
         }
-        Vector3 raypoint = new Vector3(Random.Range(-searchRange / 2, searchRange / 2) + transform.position.x, transform.position.y, (Random.Range(-searchRange / 2, searchRange / 2) + transform.position.z));
-        //Debug.Log(raypoint);
-        RaycastHit hit;
-
-
-        if (Physics.Raycast(raypoint, Vector3.up, out hit, 2f, groundlayer))
+        randomPos = transform.position + Random.insideUnitSphere * searchRange;
+        NavMeshHit hit;
+        if(NavMesh.SamplePosition(randomPos,out hit, 1.0f, NavMesh.AllAreas))
         {
-
-            isarrive = false;
-            return hit.point;
+            return hit.position;
         }
+
+        //Vector3 raypoint = new Vector3(Random.Range(-searchRange, searchRange) + transform.position.x, transform.position.y, (Random.Range(-searchRange / 2, searchRange / 2) + transform.position.z));
+        ////Debug.Log(raypoint);
+        //RaycastHit hit;
+
+
+        //if (Physics.Raycast(raypoint, Vector3.up, out hit, 2f, groundlayer))
+        //{
+
+        //    isarrive = false;
+        //    return hit.point;
+        //}
 
         return transform.position;
     }

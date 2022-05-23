@@ -50,6 +50,9 @@ public class GameManager : MonoBehaviour
         {
             audioSource = _audioSource;
         }
+        gameOverUI.SetActive(false);
+        completeLevelUI.SetActive(false);
+
     }
 
     // Update is called once per frame
@@ -59,13 +62,21 @@ public class GameManager : MonoBehaviour
             return;
 
 
-        if (TargetBase)
+        if (TargetBase==null)
         {
-            EndGame();
+            completeLevelUI.SetActive(true);
+            Time.timeScale = 0;
+            WinLevel();
 
         }
+        if (playerBase == null)
+        {
+            gameOverUI.SetActive(true);
+            Time.timeScale = 0;
+            EndGame();
+        }
     }
-    void EndGame()
+    public void EndGame()
     {
         GameIsOver = true;
         gameOverUI.SetActive(true);

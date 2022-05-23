@@ -26,6 +26,13 @@ public class TutorialStage : MonoBehaviour
         yield return new WaitUntil(() => dialogSystem01.UpdateDialog());
 
         Group1.SetActive(true);
+
+
+
+
+
+
+
         yield return new WaitUntil(() => dialogSystem02.UpdateDialog());
     }
 }

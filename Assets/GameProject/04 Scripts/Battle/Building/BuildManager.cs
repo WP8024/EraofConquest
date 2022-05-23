@@ -25,7 +25,7 @@ public class BuildManager : MonoBehaviour
 	public NodeUI nodeUI;
 
 	public bool CanBuild { get { return Building != null; } }
-	public bool HasMoney { get { return PlayerStats.Money >= Building.cost; } }
+	public bool HasMoney { get { return DataManager.instance.player.money >= Building.cost; } }
 
 	public void SelectNode(Node node)
 	{

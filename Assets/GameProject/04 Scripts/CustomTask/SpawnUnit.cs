@@ -7,11 +7,12 @@ using BehaviorDesigner.Runtime.Tasks;
 public class SpawnUnit : Action
 {
     Building bd;
-    PlayerStats player;
+    PlayerData player;
     public override void OnAwake()
     {
      
         bd = GetComponent<Building>();
+        player = DataManager.instance.player;
     }
     
 
@@ -22,7 +23,7 @@ public class SpawnUnit : Action
         {
             if (bd.createUnit())
             {
-                
+                return;
             }
         }
     }

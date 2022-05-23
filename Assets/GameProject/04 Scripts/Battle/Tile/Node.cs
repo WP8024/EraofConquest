@@ -22,13 +22,14 @@ public class Node : MonoBehaviour
 	private Color startColor;
 	public bool changed = false;
 	BuildManager buildManager;
-
+	DataManager dataManager;
 	void Start()
 	{
 		rend = GetComponent<Renderer>();
 		startColor = rend.material.color;
 		
 		buildManager = BuildManager.instance;
+		dataManager = DataManager.instance;
 	}
 
 	public Vector3 GetBuildPosition()
@@ -57,14 +58,14 @@ public class Node : MonoBehaviour
 
 	void BuildTurret(BuildingBlueprint blueprint)
 	{
-		if (PlayerStats.Money < blueprint.cost)
+		if (dataManager.player.money < blueprint.cost)
 		{
 			Debug.Log(blueprint.prefab);
 			Debug.Log("Not enough money to build that!");
 			return;
 		}
 
-		PlayerStats.Money -= blueprint.cost;
+		dataManager.player.money -= blueprint.cost;
 
 		GameObject _building = (GameObject)Instantiate(blueprint.prefab, GetBuildPosition(), Quaternion.identity);
 		building = _building;
@@ -79,13 +80,13 @@ public class Node : MonoBehaviour
 
 	public void UpgradeBuilding()
 	{
-		if (PlayerStats.Money < buildingBlueprint.upgradeCost)
+		if (dataManager.player.money < buildingBlueprint.upgradeCost)
 		{
 			Debug.Log("Not enough money to upgrade that!");
 			return;
 		}
 
-		PlayerStats.Money -= buildingBlueprint.upgradeCost;
+		dataManager.player.money -= buildingBlueprint.upgradeCost;
 
 		//Get rid of the old turret
 		Destroy(building);
@@ -104,8 +105,8 @@ public class Node : MonoBehaviour
 
 	public void SellBuilding()
 	{
-	
-		PlayerStats.Money += buildingBlueprint.GetSellAmount();
+
+		dataManager.player.money += buildingBlueprint.GetSellAmount();
 
 		GameObject effect = (GameObject)Instantiate(buildManager.sellEffect, GetBuildPosition(), Quaternion.identity);
 		Destroy(effect, 5f);

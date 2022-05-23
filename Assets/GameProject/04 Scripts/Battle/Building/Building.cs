@@ -52,7 +52,7 @@ public class Building : ObjectBody
         {
             isAttackable = true;
         }
-
+        datamanager = DataManager.instance;
         // StartCoroutine(Search());
     }
 
@@ -162,26 +162,34 @@ public class Building : ObjectBody
 
 
             int n = Random.RandomRange(0, units.Length);
-            if (PlayerStats.Money >= 200)
+
+            if (transform.tag == "Blue" && datamanager.player.money >= 200)
             {
-                if (transform.tag == "Blue")
-                {
-                    datamanager.player.money -= units[n].GetComponent<Unit>().price;
-                }
+                datamanager.player.money -= units[n].GetComponent<Unit>().price;
                 var spawnPosition = spawnPoint.position;
                 //var spawnedUnit = GameObject.Instantiate(units[n], spawnPosition, spawnPoint.rotation) as GameObject;
 
                 var spawnedUnit = GameObject.Instantiate(units[n], spawnPosition, Quaternion.Euler(0, 0, 0)) as GameObject;
-
-                //spawnedUnit.transform.parent = unitParent;
-
-                // store the spawned unit in a list so we can reference it later
-                //units.Add(spawnedUnit);
-                return true;
-
             }
-            return false;
+            if (transform.tag == "Red" && datamanager.enemy.money >= 200)
+            {
+                datamanager.enemy.money -= units[n].GetComponent<Unit>().price;
+                var spawnPosition = spawnPoint.position;
+                //var spawnedUnit = GameObject.Instantiate(units[n], spawnPosition, spawnPoint.rotation) as GameObject;
+
+                var spawnedUnit = GameObject.Instantiate(units[n], spawnPosition, Quaternion.Euler(0, 0, 0)) as GameObject;
+            }
+   
+
+            //spawnedUnit.transform.parent = unitParent;
+
+            // store the spawned unit in a list so we can reference it later
+            //units.Add(spawnedUnit);
+            return true;
 
         }
+       
+
     }
+    
 }
