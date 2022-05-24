@@ -118,62 +118,62 @@ public class Node : MonoBehaviour
 	}
 
 
-	//void OnMouseDown()
-	//{
-
-	//	if (EventSystem.current.IsPointerOverGameObject())
-	//		return;
-
-	//	if (building != null)
-	//	{
-	//		buildManager.SelectNode(this);
-	//		return;
-	//	}
-
-	//	if (!buildManager.CanBuild)
-	//		return;
-
-	//	BuildTurret(buildManager.GetTurretToBuild());
-	//	building = null;
-	//}
-
-	//void OnMouseEnter()
-	//{
-	//	if (EventSystem.current.IsPointerOverGameObject())
-	//		return;
-
-	//	if (!buildManager.CanBuild)
-	//		return;
-
-	//	if (buildManager.HasMoney)
-	//	{
-	//		rend.material.color = hoverColor;
-	//	}
-	//	else
-	//	{
-	//		rend.material.color = notEnoughMoneyColor;
-	//	}
-	//}
-
-	//void OnMouseExit()
-	//{
-	//	rend.material.color = startColor;
-	//}
-
-    private void OnTriggerEnter(Collider other)
+    void OnMouseDown()
     {
-        if (changed) { return; }
-        if (other.tag == "Blue")
+
+        if (EventSystem.current.IsPointerOverGameObject())
+            return;
+
+        if (building != null)
         {
-			rend.material.color = blue;
+            buildManager.SelectNode(this);
+            return;
         }
-		else if (other.tag == "Red")
+
+        if (!buildManager.CanBuild)
+            return;
+
+        BuildTurret(buildManager.GetTurretToBuild());
+        building = null;
+    }
+
+    void OnMouseEnter()
+    {
+        if (EventSystem.current.IsPointerOverGameObject())
+            return;
+
+        if (!buildManager.CanBuild)
+            return;
+
+        if (buildManager.HasMoney)
         {
-			rend.material.color = red;
+            rend.material.color = hoverColor;
+        }
+        else
+        {
+            rend.material.color = notEnoughMoneyColor;
         }
     }
-    private void OnTriggerExit(Collider other)
+
+    void OnMouseExit()
     {
-		rend.material.color = startColor;
+        rend.material.color = startColor;
     }
+
+    //  private void OnTriggerEnter(Collider other)
+    //  {
+    //      if (changed) { return; }
+    //      if (other.tag == "Blue")
+    //      {
+    //	rend.material.color = blue;
+    //      }
+    //else if (other.tag == "Red")
+    //      {
+    //	rend.material.color = red;
+    //      }
+    //  }
+    //  private void OnTriggerExit(Collider other)
+    //  {
+    //rend.material.color = startColor;
+    //  }
 }

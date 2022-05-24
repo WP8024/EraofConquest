@@ -257,6 +257,13 @@ public class Unit : ObjectBody
         if (currentTarget != null)
         {
             agent.SetDestination(currentTarget.transform.position);
+
+            //도착여부 판단 if문
+            if (agent.velocity.sqrMagnitude >= 0.2f * 0.2f && agent.remainingDistance <= 0.5f)
+            {
+
+            }
+
             ///move character towards target tile position
             //transform.position = Vector3.MoveTowards(transform.position, currentTarget.transform.position, moveSpeed * Time.deltaTime);
             /////rotate character
