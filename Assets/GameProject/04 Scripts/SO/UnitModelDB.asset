@@ -1,0 +1,159 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0728eafdd25f8f14c9de3bb2cb8124fa, type: 3}
+  m_Name: UnitModelDB
+  m_EditorClassIdentifier: 
+  ObjectDB:
+  - objType: 0
+    attackType: 0
+    objid: 1
+    bluePrefab: {fileID: 6391357310404797510, guid: 78098262e180b7f429ee8a40b521e589, type: 3}
+    redPrefab: {fileID: 7189545929281385637, guid: 05524671205c8854080f70b9b46bb2d8, type: 3}
+    deathClip: {fileID: 0}
+    attackClip: {fileID: 0}
+    deathParticle: {fileID: 0}
+    spawnParticle: {fileID: 0}
+  - objType: 0
+    attackType: 0
+    objid: 2
+    bluePrefab: {fileID: 984821045837721026, guid: eeb9f6d9105b25d468ee4bc0f16a9fab, type: 3}
+    redPrefab: {fileID: 8532243277372324661, guid: 133a255376de54044aa9caa7baf2420d, type: 3}
+    deathClip: {fileID: 0}
+    attackClip: {fileID: 0}
+    deathParticle: {fileID: 0}
+    spawnParticle: {fileID: 0}
+  - objType: 0
+    attackType: 0
+    objid: 3
+    bluePrefab: {fileID: 3137846327226191702, guid: 9a5c876a13e00364288f7c6f4327a661, type: 3}
+    redPrefab: {fileID: 1850493641516769225, guid: 34c1f436441346c4e8f922c1ea91e8ef, type: 3}
+    deathClip: {fileID: 0}
+    attackClip: {fileID: 0}
+    deathParticle: {fileID: 0}
+    spawnParticle: {fileID: 0}
+  - objType: 0
+    attackType: 0
+    objid: 4
+    bluePrefab: {fileID: 8383367247753506045, guid: 6e1c7a68ce2b2304fbf96296edb5b6ee, type: 3}
+    redPrefab: {fileID: 811359384544554851, guid: 955c3c38b1593e0488d3df24d7494eb6, type: 3}
+    deathClip: {fileID: 0}
+    attackClip: {fileID: 0}
+    deathParticle: {fileID: 0}
+    spawnParticle: {fileID: 0}
+  - objType: 0
+    attackType: 1
+    objid: 5
+    bluePrefab: {fileID: 5050768974903680402, guid: 4abd60264f194c847be3921309e13870, type: 3}
+    redPrefab: {fileID: 3734147445889564901, guid: a4e3c4301fc491f41ac81e919c57e9aa, type: 3}
+    deathClip: {fileID: 0}
+    attackClip: {fileID: 0}
+    deathParticle: {fileID: 0}
+    spawnParticle: {fileID: 0}
+  - objType: 0
+    attackType: 1
+    objid: 6
+    bluePrefab: {fileID: 8761454615191727212, guid: 1a13dea10a73ebd4f8fdb2c0a210a32a, type: 3}
+    redPrefab: {fileID: 1013219448950662562, guid: d21e4fa0ceb40af42a2628ad7a0ce3fc, type: 3}
+    deathClip: {fileID: 0}
+    attackClip: {fileID: 0}
+    deathParticle: {fileID: 0}
+    spawnParticle: {fileID: 0}
+  - objType: 0
+    attackType: 1
+    objid: 7
+    bluePrefab: {fileID: 1902578159082887343, guid: 700b9f051c4f6714e823a281fb6fa9fc, type: 3}
+    redPrefab: {fileID: 7451998969850843604, guid: 3b15a5d80fcfca04caea188c3537190b, type: 3}
+    deathClip: {fileID: 0}
+    attackClip: {fileID: 0}
+    deathParticle: {fileID: 0}
+    spawnParticle: {fileID: 0}
+  - objType: 0
+    attackType: 1
+    objid: 8
+    bluePrefab: {fileID: 3296483754465260045, guid: 88fa1f52d5d28de4db0835b249411fe0, type: 3}
+    redPrefab: {fileID: 9139131439464193324, guid: dc6bebbb6783f03458f3400d73618497, type: 3}
+    deathClip: {fileID: 0}
+    attackClip: {fileID: 0}
+    deathParticle: {fileID: 0}
+    spawnParticle: {fileID: 0}
+  - objType: 0
+    attackType: 0
+    objid: 9
+    bluePrefab: {fileID: 4771892495619772985, guid: fad527d3ada19ef4980ef84cb7a7a6ed, type: 3}
+    redPrefab: {fileID: 7902502751402770376, guid: a03820244f979a64da925759c713ad6d, type: 3}
+    deathClip: {fileID: 0}
+    attackClip: {fileID: 0}
+    deathParticle: {fileID: 0}
+    spawnParticle: {fileID: 0}
+  - objType: 0
+    attackType: 0
+    objid: 10
+    bluePrefab: {fileID: 8487954895053348953, guid: fe3fbd9b60c17794381fb79ad6e377b6, type: 3}
+    redPrefab: {fileID: 4517927170182396875, guid: 3bb8fe87d2fac244591f0fd3c46483a9, type: 3}
+    deathClip: {fileID: 0}
+    attackClip: {fileID: 0}
+    deathParticle: {fileID: 0}
+    spawnParticle: {fileID: 0}
+  - objType: 0
+    attackType: 0
+    objid: 11
+    bluePrefab: {fileID: 3409682366920552101, guid: 5beb7871e4799cd4a95d3870ea5772e2, type: 3}
+    redPrefab: {fileID: 219151165395972620, guid: f22f89b08514b004f875c05a48fb22fd, type: 3}
+    deathClip: {fileID: 0}
+    attackClip: {fileID: 0}
+    deathParticle: {fileID: 0}
+    spawnParticle: {fileID: 0}
+  - objType: 0
+    attackType: 0
+    objid: 12
+    bluePrefab: {fileID: 2754259755868271401, guid: d93fb02def8106644aa79ad0d646d4a8, type: 3}
+    redPrefab: {fileID: 1828331845714977130, guid: 723665eb401ef454a99d4984d2d969a5, type: 3}
+    deathClip: {fileID: 0}
+    attackClip: {fileID: 0}
+    deathParticle: {fileID: 0}
+    spawnParticle: {fileID: 0}
+  - objType: 0
+    attackType: 1
+    objid: 13
+    bluePrefab: {fileID: 6905004643088363466, guid: 263d4a0570b12c346b4d56ae3ce9f331, type: 3}
+    redPrefab: {fileID: 2099334064725359500, guid: 366c5e77e80c2494f8692a91e9441df9, type: 3}
+    deathClip: {fileID: 0}
+    attackClip: {fileID: 0}
+    deathParticle: {fileID: 0}
+    spawnParticle: {fileID: 0}
+  - objType: 0
+    attackType: 1
+    objid: 14
+    bluePrefab: {fileID: 4954650610233829908, guid: 54ce16c4a0b97584da4192c964be3eae, type: 3}
+    redPrefab: {fileID: 2085073158133524802, guid: 38e0f6aac434e054e81c21e2b524e0af, type: 3}
+    deathClip: {fileID: 0}
+    attackClip: {fileID: 0}
+    deathParticle: {fileID: 0}
+    spawnParticle: {fileID: 0}
+  - objType: 0
+    attackType: 1
+    objid: 15
+    bluePrefab: {fileID: 2387093517226372954, guid: 4a5ff9d9b85c22b45ac563d095968bc9, type: 3}
+    redPrefab: {fileID: 6163470494395710079, guid: 10a49a74a4417b24aae6f841d1b12e86, type: 3}
+    deathClip: {fileID: 0}
+    attackClip: {fileID: 0}
+    deathParticle: {fileID: 0}
+    spawnParticle: {fileID: 0}
+  - objType: 0
+    attackType: 1
+    objid: 16
+    bluePrefab: {fileID: 4324432281812719405, guid: 12abc842981afcc4e90745a6fd1131c7, type: 3}
+    redPrefab: {fileID: 4595215282165469897, guid: 67c55811f1cf8de47a40a8f1eb132097, type: 3}
+    deathClip: {fileID: 0}
+    attackClip: {fileID: 0}
+    deathParticle: {fileID: 0}
+    spawnParticle: {fileID: 0}

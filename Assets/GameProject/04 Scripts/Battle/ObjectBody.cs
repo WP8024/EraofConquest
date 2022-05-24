@@ -16,7 +16,7 @@ public abstract class ObjectBody : MonoBehaviour , IDamageable
 
     public enum Faction { Blue, Red, Yellow, Green, None };
     public enum ObjType { Unit, Building, None }
-    public enum AttackType { Melee, Ranged }
+    public enum AttackType { Melee, Ranged, None }
 
     [Header("Object Stat")]
     public Faction faction;

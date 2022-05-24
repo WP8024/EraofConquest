@@ -9,8 +9,8 @@ using BehaviorDesigner.Runtime.Tasks;
 public class GetRandomPosition : Conditional
 {
     Unit unit;
-    SharedTransform target;
-    Vector3 randomPos;
+    public SharedTransform target;
+    public Vector3 randomPos;
     NavMeshHit hit;
     public override void OnAwake()
     {

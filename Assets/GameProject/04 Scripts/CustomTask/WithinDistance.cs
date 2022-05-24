@@ -11,8 +11,9 @@ public class WithinDistance : Conditional
     public bool lineOfSight;
     public Transform[] targets;
 
-    public SharedTransform target;
     public SharedString targetTag;
+    public SharedTransform target;
+ 
 
     // true if we obtained the targets through the targetTag
     private bool dynamicTargets;

@@ -8,7 +8,6 @@ using UnityEngine;
 public class ObjectData
 {
     [Header("Enum")]
-    public ObjectBody.Faction faction;
     public ObjectBody.ObjType objType;
     public ObjectBody.AttackType attackType;
    

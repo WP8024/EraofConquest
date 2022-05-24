@@ -7,6 +7,8 @@ using BehaviorDesigner.Runtime.Tasks;
 [TaskCategory("Custom")]
 public class Attack : Action
 {
+
+
     Unit unit;
     ObjectBody objbody;
     public SharedGameObject targetGameObject;
@@ -17,6 +19,7 @@ public class Attack : Action
     private GameObject prevGameObject;
     public override void OnAwake()
     {
+        unit = GetComponent<Unit>();
         target = targetGameObject.Value.GetComponent<Transform>();
         objbody = target.Value.GetComponent<ObjectBody>();
     }

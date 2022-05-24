@@ -9,11 +9,6 @@ public class IsAlive : Conditional
 {
     public SharedTransform target;
     private ObjectBody objbody;
-    public override void OnAwake()
-    {
-
-    }
-
 
     public override void OnStart()
     {
@@ -21,6 +16,7 @@ public class IsAlive : Conditional
         if (target.Value == null)
         {
             objbody = null;
+            return;
         }
         // cache the health component
         objbody = target.Value.GetComponent<ObjectBody>();
@@ -29,14 +25,10 @@ public class IsAlive : Conditional
     // OnUpdate will return success if the object is still alive and failure if it not
     public override TaskStatus OnUpdate()
     {
-        if (target == null)
-        {
-            return TaskStatus.Failure;
-        }
-        else if (objbody != null && objbody.health > 0)
+        if (objbody != null && objbody.health > 0)
         {
             return TaskStatus.Success;
         }
-        return TaskStatus.Success;
+        return TaskStatus.Failure;
     }
 }

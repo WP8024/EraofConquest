@@ -191,5 +191,12 @@ public class Building : ObjectBody
        
 
     }
+
+    public void SetColor()
+    {
+        Collider curcollider = transform.GetComponent<Collider>();
+
+        //Physics.OverlapBox(transform.position,)
+    }
     
 }

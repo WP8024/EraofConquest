@@ -93,8 +93,17 @@ public class Unit : ObjectBody
 
        
     }
-    public void SetUP()
+    public void SetUP(Faction _faction,UnitData data)
     {
+        faction = _faction;                 //팩션
+        health = data.maxhp;                //체력
+        attackDamage = data.damage;         //데미지
+        attackRange = data.attackdistance;  //공격범위
+        //attackDelay =                     //공격속도
+        moveSpeed = data.movespeed;         //이동속도
+        //attackAudio                       //공격소리
+                                            //죽을때소리
+                                            
 
         attackDamage = attackDamage + (DataManager.instance.player.up_CavalryUnit);
     }
@@ -112,7 +121,6 @@ public class Unit : ObjectBody
     {
         if (isAttack)
         {
-
             timer += Time.deltaTime;
             if (timer >= attackDelay)
             {
@@ -144,7 +152,6 @@ public class Unit : ObjectBody
                     {
                         isAttack = true;
                         transform.LookAt(currentTarget.transform);
-                        Debug.Log("Attack call");
                         Attack(currentTarget);
                     }
                 }
@@ -152,21 +159,13 @@ public class Unit : ObjectBody
         }
         else
         {
-           
-            Debug.Log("Onarrive() fail");
             Move();
-
-
         }
-        
-
-
-
+        #region 주석
         //if (nextPos == transform.position)
         //{
         //    nextPos = getRandomPosition();
         //}
-
         //if (!isarrive)
         //{
         //    Move();
@@ -190,7 +189,6 @@ public class Unit : ObjectBody
         //    }
         //}
         //if (isMoving) { }
-
         //if (currentTarget == null)
         //{
         //    isAttack = false;
@@ -198,7 +196,6 @@ public class Unit : ObjectBody
         //}
         //if (isAttack)
         //{
-
         //    ///calculate direction vector
         //    Vector3 direction = (currentTarget.transform.position - transform.position).normalized;
 
@@ -208,8 +205,8 @@ public class Unit : ObjectBody
         //    ///rotate character
         //    transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.AngleAxis(angle, Vector3.up), 0.1f);
         //}
-
         //if (isDead) { }
+        #endregion
     }
 
     public virtual bool inRange(ObjectBody _target)
@@ -236,7 +233,6 @@ public class Unit : ObjectBody
     {
         if(_target== null)
         {
-            Debug.Log("CheckInAttackrange curtargel null");
             return false;
         }
         else
@@ -250,34 +246,32 @@ public class Unit : ObjectBody
     }
     public void Move()
     {
-        //if (OnArrive() || isAttack) return;
-
         moveRotation = CalculateRotation();
 
         if (currentTarget != null)
         {
             agent.SetDestination(currentTarget.transform.position);
 
-            //도착여부 판단 if문
-            if (agent.velocity.sqrMagnitude >= 0.2f * 0.2f && agent.remainingDistance <= 0.5f)
-            {
-
-            }
+            #region 주석
+            //도착여부 판단 if문 작성중
+            //if (agent.velocity.sqrMagnitude >= 0.2f * 0.2f && agent.remainingDistance <= 0.5f)
+            //{
+            //}
 
             ///move character towards target tile position
             //transform.position = Vector3.MoveTowards(transform.position, currentTarget.transform.position, moveSpeed * Time.deltaTime);
             /////rotate character
             //transform.rotation = Quaternion.Lerp(this.transform.rotation, moveRotation, 0.1f);
-
+            #endregion
         }
-        else if (currentTarget == null)
+        else
         {
             agent.SetDestination(nextPos);
-            
+            #region moveToward사용시
             //transform.position = Vector3.MoveTowards(transform.position, nextPos, moveSpeed * Time.deltaTime);
             //transform.rotation = Quaternion.Lerp(transform.rotation, moveRotation, 0.1f);
+            #endregion
         }
-
         if (!isMoving)
         {
             isMoving = true;
@@ -293,7 +287,6 @@ public class Unit : ObjectBody
         {
             if(Vector3.Distance(transform.position, nextPos)<attackRange)
             {
-                //Debug.Log("Vector3.Distance(transform.position, nextPos)<attackRange :" + Vector3.Distance(transform.position, nextPos));
                 isMoving = false;
                 isarrive = true;
                 unitAnimation.SetRun(false);
@@ -316,10 +309,9 @@ public class Unit : ObjectBody
 
     }
 
-    
-
     public void Attack(ObjectBody _targetCharacter)
     {
+        #region 주석
         //if (!isAttack)
         //    return;
         //if (Vector3.Distance(transform.position, _targetCharacter.transform.position) > attackRange)
@@ -327,6 +319,7 @@ public class Unit : ObjectBody
         //    isarrive = false;
         //    return;
         //}
+        #endregion 
         if (!isAttack) return;
         //타겟 저장
         currentTarget = _targetCharacter;
@@ -411,7 +404,7 @@ public class Unit : ObjectBody
         {
             return hit.position;
         }
-
+        #region
         //Vector3 raypoint = new Vector3(Random.Range(-searchRange, searchRange) + transform.position.x, transform.position.y, (Random.Range(-searchRange / 2, searchRange / 2) + transform.position.z));
         ////Debug.Log(raypoint);
         //RaycastHit hit;
@@ -423,7 +416,7 @@ public class Unit : ObjectBody
         //    isarrive = false;
         //    return hit.point;
         //}
-
+        #endregion
         return transform.position;
     }
 

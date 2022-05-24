@@ -160,20 +160,20 @@ public class Node : MonoBehaviour
         rend.material.color = startColor;
     }
 
-    //  private void OnTriggerEnter(Collider other)
-    //  {
-    //      if (changed) { return; }
-    //      if (other.tag == "Blue")
-    //      {
-    //	rend.material.color = blue;
-    //      }
-    //else if (other.tag == "Red")
-    //      {
-    //	rend.material.color = red;
-    //      }
-    //  }
-    //  private void OnTriggerExit(Collider other)
-    //  {
-    //rend.material.color = startColor;
-    //  }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (changed) { return; }
+        if (other.tag == "Blue")
+        {
+            rend.material.color = blue;
+        }
+        else if (other.tag == "Red")
+        {
+            rend.material.color = red;
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        rend.material.color = startColor;
+    }
 }

@@ -53503,7 +53503,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2545aa2945b3d0442ac8d8bc61ae91b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: {r: 0, g: 0, b: 0, a: 0}
+  Rendermodel: {fileID: 0}
+  Deafult: {r: 0, g: 0, b: 0, a: 0}
+  Blue: {r: 0, g: 0, b: 0, a: 0}
+  Red: {r: 0, g: 0, b: 0, a: 0}
 --- !u!4 &1640009729
 Transform:
   m_ObjectHideFlags: 0
@@ -70665,6 +70668,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1574600883, guid: 4abd60264f194c847be3921309e13870, type: 3}
+      propertyPath: mBehaviorSource.mTaskData.JSONSerialization
+      value: '{"EntryTask":{"Type":"BehaviorDesigner.Runtime.Tasks.EntryTask","NodeData":{"Offset":"(424,-87)"},"ID":0,"Name":"Entry","Instant":true},"RootTask":{"Type":"BehaviorDesigner.Runtime.Tasks.Repeater","NodeData":{"Offset":"(4,123)"},"ID":1,"Name":"Repeater","Instant":true,"SharedIntcount":{"Type":"BehaviorDesigner.Runtime.SharedInt","Name":null,"Int32mValue":0},"SharedBoolrepeatForever":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":false},"SharedBoolendOnFailure":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true}},"Variables":[{"Type":"BehaviorDesigner.Runtime.SharedGameObject","Name":"curGameObject","IsShared":true},{"Type":"BehaviorDesigner.Runtime.SharedGameObject","Name":"targetObjectPrefab","IsShared":true},{"Type":"BehaviorDesigner.Runtime.SharedTransform","Name":"target","IsShared":true},{"Type":"BehaviorDesigner.Runtime.SharedString","Name":"targetTag","IsShared":true}]}'
+      objectReference: {fileID: 0}
     - target: {fileID: 5050768974903680402, guid: 4abd60264f194c847be3921309e13870, type: 3}
       propertyPath: m_Name
       value: Archer1
@@ -70675,7 +70682,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5050768974903837170, guid: 4abd60264f194c847be3921309e13870, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -27.5
+      value: -8.437223
       objectReference: {fileID: 0}
     - target: {fileID: 5050768974903837170, guid: 4abd60264f194c847be3921309e13870, type: 3}
       propertyPath: m_LocalPosition.y
@@ -70683,7 +70690,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5050768974903837170, guid: 4abd60264f194c847be3921309e13870, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.8953018
+      value: -3.750514
       objectReference: {fileID: 0}
     - target: {fileID: 5050768974903837170, guid: 4abd60264f194c847be3921309e13870, type: 3}
       propertyPath: m_LocalRotation.w
@@ -71121,6 +71128,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 41261331299284748, guid: a1fe04a800718a5418976d865f824b35, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3782845334691684835, guid: a1fe04a800718a5418976d865f824b35, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
@@ -71147,7 +71158,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6886915065951608683, guid: a1fe04a800718a5418976d865f824b35, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6886915066004815323, guid: a1fe04a800718a5418976d865f824b35, type: 3}
       propertyPath: m_AnchorMax.y
@@ -71387,6 +71398,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 953030936, guid: 6e1c7a68ce2b2304fbf96296edb5b6ee, type: 3}
+      propertyPath: mBehaviorSource.mTaskData.Version
+      value: 1.7.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 953030936, guid: 6e1c7a68ce2b2304fbf96296edb5b6ee, type: 3}
+      propertyPath: mBehaviorSource.mTaskData.JSONSerialization
+      value: '{"Variables":[{"Type":"BehaviorDesigner.Runtime.SharedGameObject","Name":"targetObject","IsShared":true},{"Type":"BehaviorDesigner.Runtime.SharedTransform","Name":"target","IsShared":true}]}'
+      objectReference: {fileID: 0}
     - target: {fileID: 8383367247753277597, guid: 6e1c7a68ce2b2304fbf96296edb5b6ee, type: 3}
       propertyPath: m_RootOrder
       value: 14
@@ -71615,6 +71634,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 760462476, guid: eeb9f6d9105b25d468ee4bc0f16a9fab, type: 3}
+      propertyPath: mBehaviorSource.mTaskData.Version
+      value: 1.7.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 760462476, guid: eeb9f6d9105b25d468ee4bc0f16a9fab, type: 3}
+      propertyPath: mBehaviorSource.mTaskData.JSONSerialization
+      value: '{"Variables":[{"Type":"BehaviorDesigner.Runtime.SharedGameObject","Name":"targetObject","IsShared":true},{"Type":"BehaviorDesigner.Runtime.SharedTransform","Name":"target","IsShared":true}]}'
+      objectReference: {fileID: 0}
     - target: {fileID: 984821045837689250, guid: eeb9f6d9105b25d468ee4bc0f16a9fab, type: 3}
       propertyPath: m_RootOrder
       value: 16
