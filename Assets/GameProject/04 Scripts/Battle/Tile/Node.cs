@@ -39,9 +39,9 @@ public class Node : MonoBehaviour
 		return transform.position + positionOffset;
 	}
 
-	void OnMouseDown()
-	{
 
+	public void OnClickNode()
+    {
 		if (EventSystem.current.IsPointerOverGameObject())
 			return;
 
@@ -57,11 +57,6 @@ public class Node : MonoBehaviour
 		BuildTurret(buildManager.GetTurretToBuild());
 		building = null;
 	}
-
-	void OnClickButoon()
-    {
-
-    }
 
 	void BuildTurret(BuildingBlueprint blueprint)
 	{
@@ -122,29 +117,48 @@ public class Node : MonoBehaviour
 		buildingBlueprint = null;
 	}
 
-	void OnMouseEnter()
-	{
-		if (EventSystem.current.IsPointerOverGameObject())
-			return;
 
-		if (!buildManager.CanBuild)
-			return;
+	//void OnMouseDown()
+	//{
 
-		if (buildManager.HasMoney)
-		{
-			rend.material.color = hoverColor;
-		}
-		else
-		{
-			rend.material.color = notEnoughMoneyColor;
-		}
+	//	if (EventSystem.current.IsPointerOverGameObject())
+	//		return;
 
-	}
+	//	if (building != null)
+	//	{
+	//		buildManager.SelectNode(this);
+	//		return;
+	//	}
 
-	void OnMouseExit()
-	{
-		rend.material.color = startColor;
-	}
+	//	if (!buildManager.CanBuild)
+	//		return;
+
+	//	BuildTurret(buildManager.GetTurretToBuild());
+	//	building = null;
+	//}
+
+	//void OnMouseEnter()
+	//{
+	//	if (EventSystem.current.IsPointerOverGameObject())
+	//		return;
+
+	//	if (!buildManager.CanBuild)
+	//		return;
+
+	//	if (buildManager.HasMoney)
+	//	{
+	//		rend.material.color = hoverColor;
+	//	}
+	//	else
+	//	{
+	//		rend.material.color = notEnoughMoneyColor;
+	//	}
+	//}
+
+	//void OnMouseExit()
+	//{
+	//	rend.material.color = startColor;
+	//}
 
     private void OnTriggerEnter(Collider other)
     {

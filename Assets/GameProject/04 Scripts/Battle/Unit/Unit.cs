@@ -55,6 +55,10 @@ public class Unit : ObjectBody
 
     private UnitAnimation unitAnimation;
     private AudioSource audio;
+
+
+    private GameObject unitMarker;
+
     public override void Setup(ObjectBody obj, int id)
     {
         base.Setup(obj, id);
@@ -273,14 +277,6 @@ public class Unit : ObjectBody
             unitAnimation.SetRun(true);
         }
     }
-    public void SelectUnitMove(Vector3 pos)
-    {
-        if (selected)
-        {
-            currentTarget = null;
-            nextPos = pos;
-        }
-    }
 
 
 
@@ -290,7 +286,7 @@ public class Unit : ObjectBody
         {
             if(Vector3.Distance(transform.position, nextPos)<attackRange)
             {
-                Debug.Log("Vector3.Distance(transform.position, nextPos)<attackRange :" + Vector3.Distance(transform.position, nextPos));
+                //Debug.Log("Vector3.Distance(transform.position, nextPos)<attackRange :" + Vector3.Distance(transform.position, nextPos));
                 isMoving = false;
                 isarrive = true;
                 unitAnimation.SetRun(false);
@@ -504,16 +500,27 @@ public class Unit : ObjectBody
     
         
     //}
-    public void OnDeathFinish()
-    {
 
-    }
-    public void OnChargeFinish()
+    //À¯´Ö¼±ÅÃ
+    
+    public void SelectUnit()
     {
-
+        selectedMarker.SetActive(true);
+        Debug.Log("SelectUnit");
     }
-    public void OnCastFinish()
+    public void DeselectUnit()
     {
+        selectedMarker.SetActive(false);
+        Debug.Log("deselectUnit");
+    }
+    public void SelectUnitMove(Vector3 pos)
+    {
+        if (selected)
+        {
+            currentTarget = null;
+            nextPos = pos;
+            agent.SetDestination(pos);
+        }
 
     }
 

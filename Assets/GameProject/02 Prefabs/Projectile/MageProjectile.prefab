@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 135713622178651324}
   - component: {fileID: 3806623937907274959}
   m_Layer: 0
-  m_Name: Projectile 6
+  m_Name: MageProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5014,7 +5014,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hit: {fileID: 0}
   flash: {fileID: 0}
-  Detached: []
+  Detached:
+  - {fileID: 1984230739644340}
   collisionMask:
     serializedVersion: 2
     m_Bits: 0
@@ -9809,7 +9810,6 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: c90a3c23b0fc60244a9f3588ff9e721f, type: 2}
-  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

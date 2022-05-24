@@ -53,8 +53,6 @@ public class UIManager : MonoBehaviour
 
     public void Update()
     {
-        Debug.Log(playerdata.curBuilding);
-        Debug.Log("curBuilding log"+ playerdata.curBuilding);
         playerUnitText.text = playerdata.curUnit.ToString() + " / " + playerdata.maxUnit.ToString();
         playerBuildingText.text = playerdata.curBuilding.ToString() + " / " + playerdata.maxBuilding.ToString();
         playerMoneyText.text = playerdata.money.ToString();

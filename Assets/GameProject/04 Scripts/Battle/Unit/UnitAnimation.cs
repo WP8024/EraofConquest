@@ -56,26 +56,25 @@ public class UnitAnimation : MonoBehaviour
     //{ 
     //    unit.OnAttack();
     //}
-    #region
+    #region 애니메이션 이벤트가 안맞아서 일단은 폐기
     //public void OnAttackAnimationFinished()
     //{
     //    SetAttack(false);
     //    Debug.Log("attack");
     //    unit.OnAttackFinish();
     //}
+    //public void OnChargeAnimationFinished()
+    //{
+    //    SetCharge(false);
 
-    public void OnChargeAnimationFinished()
-    {
-        SetCharge(false);
+    //    unit.OnChargeFinish();
+    //}
+    //public void OnCastAnimationFinished()
+    //{
+    //    SetCast(false);
 
-        unit.OnChargeFinish();
-    }
-    public void OnCastAnimationFinished()
-    {
-        SetCast(false);
-
-        unit.OnCastFinish();
-    }
+    //    unit.OnCastFinish();
+    //}
     #endregion
 }
 

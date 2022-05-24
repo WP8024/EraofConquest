@@ -36,7 +36,7 @@ public abstract class ObjectBody : MonoBehaviour , IDamageable
     private AudioSource audioSource;
 
     [SerializeField]
-    private GameObject selectedMarker;
+    public GameObject selectedMarker;
     public bool selected;
 
     public virtual void Awake()
