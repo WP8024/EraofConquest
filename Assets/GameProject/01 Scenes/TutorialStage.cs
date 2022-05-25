@@ -30,16 +30,31 @@ public class TutorialStage : MonoBehaviour
 
         while (test1)
         {
+            if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D))
+            {
+                test1 = true;
+            }
         }
 
+        StartCoroutine(Wait());
+
+        yield return new WaitUntil(() => dialogSystem02.UpdateDialog());
+        
+        
+        
         Group1.SetActive(true);
 
 
 
 
 
+        yield return new WaitUntil(() => dialogSystem03.UpdateDialog());
 
 
-        yield return new WaitUntil(() => dialogSystem02.UpdateDialog());
+    }
+
+    IEnumerator Wait()
+    {
+        yield return new WaitForSecondsRealtime(1f);
     }
 }

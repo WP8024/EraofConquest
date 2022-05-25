@@ -633,7 +633,7 @@ MonoBehaviour:
       parentIndex: 
       startIndex: 
       variableStartIndex: 
-      JSONSerialization: 
+      JSONSerialization: '{"Variables":[{"Type":"BehaviorDesigner.Runtime.SharedGameObject","Name":"curGameObject","IsShared":true},{"Type":"BehaviorDesigner.Runtime.SharedGameObject","Name":"targetObjectPrefab","IsShared":true},{"Type":"BehaviorDesigner.Runtime.SharedTransform","Name":"target","IsShared":true},{"Type":"BehaviorDesigner.Runtime.SharedString","Name":"targetTag","IsShared":true},{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":"isSetup","IsShared":true,"BooleanmValue":false}]}'
       fieldSerializationData:
         typeName: []
         fieldNameHash: 
@@ -642,7 +642,7 @@ MonoBehaviour:
         unityObjects: []
         byteData: 
         byteDataArray: 
-      Version: 
+      Version: 1.7.2
   gizmoViewMode: 2
   showBehaviorDesignerGizmo: 1
 --- !u!82 &-5650017702538893529

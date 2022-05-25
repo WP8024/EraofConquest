@@ -20,6 +20,16 @@ public class StageManager : MonoBehaviour
     private StageNode lastMapNodeBattleLoaded;
 
     bool option=false;
+
+    private void Awake()
+    {
+        if (instance!=null)
+        {
+            Destroy(instance);
+            instance = this;
+        }
+        DontDestroyOnLoad(this.gameObject);
+    }
     // Start is called before the first frame update
     void Start()
     {

@@ -80,7 +80,6 @@ public class GameManager : MonoBehaviour
 
         GameIsOver = true;
         gameOverUI.SetActive(true);
-        LoadingSceneController.LoadScene("Title Scene");
         StageManager.instance.OnBattleComplete(LOSE);
     }
 
@@ -89,7 +88,6 @@ public class GameManager : MonoBehaviour
 
         GameIsOver = true;
         completeLevelUI.SetActive(true);
-        LoadingSceneController.LoadScene("Title Scene");
         StageManager.instance.OnBattleComplete(WIN);
     }
 }
