@@ -24,7 +24,7 @@ public class CameraController : MonoBehaviour
     public Vector3 rotateStartPosition;
     public Vector3 rotateCurrentPosition;
 
-    BuildManager buildManager;
+    //BuildManager buildManager;
 
     private void Awake()
     {
@@ -54,7 +54,7 @@ public class CameraController : MonoBehaviour
         newRotation = transform.rotation;
         newZoom = cameraTransform.localPosition;
 
-        buildManager = BuildManager.instance;
+        //buildManager = BuildManager.instance;
     }
     void LateUpdate()
     {

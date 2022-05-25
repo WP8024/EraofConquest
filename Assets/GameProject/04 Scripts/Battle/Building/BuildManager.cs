@@ -4,16 +4,39 @@ using UnityEngine;
 
 public class BuildManager : MonoBehaviour
 {
-	public static BuildManager instance;
+	private static BuildManager instance;
+	public static BuildManager Instance
+    {
+
+		get
+		{
+			var obj = FindObjectOfType<BuildManager>();
+			if (obj != null)
+			{
+				instance = obj;
+			}
+			else
+			{
+				var newObj = new GameObject().AddComponent<BuildManager>();
+				instance = newObj;
+			}
+			return instance;
+		}
+
+	}
 
 	void Awake()
 	{
-		if (instance != null)
+		if (instance == null)
 		{
-			Debug.LogError("More than one BuildManager in scene!");
-			return;
+			instance = this;
 		}
-		instance = this;
+		else if (instance != this)
+		{
+			Destroy(instance.gameObject);
+		}
+		//SetUP();
+		//씬이 바뀌어도 사라지면 안되기때문에 이동
 	}
 
 	public GameObject buildEffect;
@@ -25,7 +48,7 @@ public class BuildManager : MonoBehaviour
 	public NodeUI nodeUI;
 
 	public bool CanBuild { get { return Building != null; } }
-	public bool HasMoney { get { return DataManager.instance.player.money >= Building.cost; } }
+	public bool HasMoney { get { return DataManager.Instance.player.money >= Building.cost; } }
 
 	public void SelectNode(Node node)
 	{

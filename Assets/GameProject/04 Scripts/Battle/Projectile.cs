@@ -14,10 +14,9 @@ public class Projectile : MonoBehaviour
     public float damage = 10;
     float lifetime = 2;
     public float hitOffset = 0f;
-
     private ObjectBody target;
 
-    void start()
+    void Start()
     {
        
         if (flash != null)
@@ -102,7 +101,10 @@ public class Projectile : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit, moveDistance, collisionMask, QueryTriggerInteraction.Collide))
         {
-            OnHitObject(hit);
+            if (hit.transform.CompareTag(target.tag))
+            {
+                OnHitObject(hit);
+            }
         }
     }
 

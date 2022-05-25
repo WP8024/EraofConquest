@@ -34,7 +34,7 @@ public class Building : ObjectBody
     public bool isSpawner = false;
     public bool isAttackable = false;
 
-    private DataManager datamanager;
+    //private DataManager datamanager;
 
     public override void Awake()
     {
@@ -52,33 +52,10 @@ public class Building : ObjectBody
         {
             isAttackable = true;
         }
-        datamanager = DataManager.instance;
+        //datamanager = DataManager.instance;
         // StartCoroutine(Search());
     }
 
-    public override void Updated()
-    {
-
-    }
-
-    public void Update()
-    {
-
-        if (target == null || !inRange(target))
-        {
-            target = null;
-            Search();
-        }
-        if (inRange(target))
-        {
-            StartCoroutine(Shoot());
-
-        }
-    }
-    public override bool HandleMessage(Telegram telegram)
-    {
-        return false;
-    }
 
     public void Seek(Transform _target)
     {
@@ -163,21 +140,22 @@ public class Building : ObjectBody
 
             int n = Random.RandomRange(0, units.Length);
 
-            if (transform.tag == "Blue" && datamanager.player.money >= 200)
+            if (transform.tag == "Blue" && DataManager.Instance.player.money >= units[n].GetComponent<Unit>().price)
             {
-                datamanager.player.money -= units[n].GetComponent<Unit>().price;
+                DataManager.Instance.player.money -= units[n].GetComponent<Unit>().price;
                 var spawnPosition = spawnPoint.position;
                 //var spawnedUnit = GameObject.Instantiate(units[n], spawnPosition, spawnPoint.rotation) as GameObject;
 
                 var spawnedUnit = GameObject.Instantiate(units[n], spawnPosition, Quaternion.Euler(0, 0, 0)) as GameObject;
             }
-            if (transform.tag == "Red" && datamanager.enemy.money >= 200)
+            if (transform.tag == "Red" && DataManager.Instance.enemy.money >= units[n].GetComponent<Unit>().price)
             {
-                datamanager.enemy.money -= units[n].GetComponent<Unit>().price;
+                DataManager.Instance.enemy.money -= units[n].GetComponent<Unit>().price;
                 var spawnPosition = spawnPoint.position;
                 //var spawnedUnit = GameObject.Instantiate(units[n], spawnPosition, spawnPoint.rotation) as GameObject;
 
                 var spawnedUnit = GameObject.Instantiate(units[n], spawnPosition, Quaternion.Euler(0, 0, 0)) as GameObject;
+                
             }
    
 
@@ -192,11 +170,11 @@ public class Building : ObjectBody
 
     }
 
-    public void SetColor()
-    {
-        Collider curcollider = transform.GetComponent<Collider>();
+    //public void SetColor()
+    //{
+    //    Collider curcollider = transform.GetComponent<Collider>();
 
-        //Physics.OverlapBox(transform.position,)
-    }
+    //    //Physics.OverlapBox(transform.position,)
+    //}
     
 }

@@ -5,9 +5,26 @@ using System.IO;
 
 public class DataManager : MonoBehaviour
 {
-    public static DataManager instance;
 
-    PlayerData curplayer = new PlayerData();
+    private static DataManager instance;
+    public static DataManager Instance
+    {
+        get
+        {
+            var obj = FindObjectOfType<DataManager>();
+            if (obj != null)
+            {
+                instance = obj;
+            }
+            else
+            {
+                var newObj = new GameObject().AddComponent<DataManager>();
+                instance = newObj;
+            }
+            return instance;
+        }
+
+    }
 
     [SerializeField]
     private int stageNumber;
@@ -17,6 +34,20 @@ public class DataManager : MonoBehaviour
     public PlayerData player;
     public PlayerData enemy;
 
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else if (instance != this)
+        {
+            Destroy(instance.gameObject);
+        }
+        SetUP();
+        //씬이 바뀌어도 사라지면 안되기때문에 이동
+        DontDestroyOnLoad(this.gameObject);
+    }
     public void SetUP()
     {
         int index = 0;
@@ -57,24 +88,6 @@ public class DataManager : MonoBehaviour
 
     }
 
-    public void Upgrade()
-    {
-    }
-
-    private void Awake()
-    {
-        if (instance == null)
-        {
-            instance = this;
-        }
-        else if (instance != this)
-        {
-            Destroy(instance.gameObject);
-        }
-        SetUP();
-        //씬이 바뀌어도 사라지면 안되기때문에 이동
-        DontDestroyOnLoad(this.gameObject);
-    }
 
 
     /// <summary>
@@ -86,7 +99,7 @@ public class DataManager : MonoBehaviour
     void SaveDataToJson()
     {
         //string jsonData = JsonUtility.ToJson(unitdata); // 한줄로만 저장되어 사람이 읽기어려움
-        string jsonData= JsonUtility.ToJson(curplayer,true); // printPrint적용 으로 사람이 읽기 편하게 구획별로 나눠줌
+        string jsonData= JsonUtility.ToJson(player,true); // printPrint적용 으로 사람이 읽기 편하게 구획별로 나눠줌
         string path = Application.dataPath + ("/data.json"); //datapath는 현재 실행중인 유니티 프로젝트 경로
     }
     /// <summary>

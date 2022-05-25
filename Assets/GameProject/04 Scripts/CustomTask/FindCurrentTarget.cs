@@ -7,7 +7,7 @@ using BehaviorDesigner.Runtime;
 public class FindCurrentTarget :Action
 {
     public SharedTransform target;
-    public string targetTag;
+    public SharedString targetTag;
     public float distance;
     private Transform targetTransform;
 
@@ -17,9 +17,9 @@ public class FindCurrentTarget :Action
 
         if (target != null) return TaskStatus.Running;
 
-
-        targetTag = (transform.tag == "Blue") ? "Red" : "Blue";
-        targetTransform = GameObject.FindGameObjectWithTag(targetTag).transform;
+        //targetTag = target.Value.tag;
+        //targetTag = (transform.tag == "Blue") ? "Red" : "Blue";
+        targetTransform = GameObject.FindGameObjectWithTag(targetTag.Value).transform;
         target = targetTransform;
         if (target == null) return TaskStatus.Failure;
        

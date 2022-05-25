@@ -52,7 +52,7 @@ public class MessageDispatcher
 	/// </summary>
 	private void Discharge(ObjectBody receiver, Telegram telegram)
 	{
-		receiver.HandleMessage(telegram);
+		//receiver.HandleMessage(telegram);
 	}
 
 	/// <summary>

@@ -69,8 +69,7 @@ public abstract class ObjectBody : MonoBehaviour , IDamageable
     {
 
     }
-    // GameController 클래스에서 모든 에이전트의 Updated()를 호출해 에이전트를 구동한다.
-    public abstract void Updated();
+    
 
 
     public virtual void TakeHit(float damage,RaycastHit raycast)
@@ -110,10 +109,5 @@ public abstract class ObjectBody : MonoBehaviour , IDamageable
         selectedMarker.SetActive(selected);
     }
 
-    // 메시지를 발송했을 때 수신하는 메소드 (MessageDispatcher 클래스에서 호출)
-    public virtual bool HandleMessage(Telegram telegram)
-    {
-        Debug.Log("not resiver ObjectBody.Cs");
-        return false;
-    }
+   
 }

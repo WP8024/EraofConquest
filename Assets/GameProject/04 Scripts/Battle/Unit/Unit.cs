@@ -105,17 +105,10 @@ public class Unit : ObjectBody
                                             //Á×À»¶§¼Ò¸®
                                             
 
-        attackDamage = attackDamage + (DataManager.instance.player.up_CavalryUnit);
+        attackDamage = attackDamage + (DataManager.Instance.player.up_CavalryUnit);
     }
 
-    public override void Updated()
-    {
-    }
 
-    IEnumerator Attack()
-    {
-        yield return new WaitForSeconds(attackDelay);
-    }
 
     public void Update()
     {

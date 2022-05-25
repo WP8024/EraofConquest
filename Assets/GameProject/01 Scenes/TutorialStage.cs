@@ -36,7 +36,7 @@ public class TutorialStage : MonoBehaviour
             }
         }
 
-        StartCoroutine(Wait());
+        yield return StartCoroutine(Wait());
 
         yield return new WaitUntil(() => dialogSystem02.UpdateDialog());
         
@@ -55,6 +55,6 @@ public class TutorialStage : MonoBehaviour
 
     IEnumerator Wait()
     {
-        yield return new WaitForSecondsRealtime(1f);
+        yield return new WaitForSecondsRealtime(4f);
     }
 }

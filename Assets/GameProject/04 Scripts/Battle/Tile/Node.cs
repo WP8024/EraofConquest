@@ -23,15 +23,15 @@ public class Node : MonoBehaviour
 	private Renderer rend;
 	private Color startColor;
 	public bool changed = false;
-	BuildManager buildManager;
-	DataManager dataManager;
+	//BuildManager buildManager;
+	//DataManager dataManager;
 	void Start()
 	{
 		rend = GetComponent<Renderer>();
 		startColor = rend.material.color;
 		
-		buildManager = BuildManager.instance;
-		dataManager = DataManager.instance;
+		//buildManager = BuildManager.instance;
+		//dataManager = DataManager.Instance;
 	}
 
 	public Vector3 GetBuildPosition()
@@ -47,48 +47,48 @@ public class Node : MonoBehaviour
 
 		if (building != null)
 		{
-			buildManager.SelectNode(this);
+			BuildManager.Instance.SelectNode(this);
 			return;
 		}
 
-		if (!buildManager.CanBuild)
+		if (!BuildManager.Instance.CanBuild)
 			return;
 
-		BuildTurret(buildManager.GetTurretToBuild());
+		BuildTurret(BuildManager.Instance.GetTurretToBuild());
 		building = null;
 	}
 
 	void BuildTurret(BuildingBlueprint blueprint)
 	{
-		if (dataManager.player.money < blueprint.cost)
+		if (DataManager.Instance.player.money < blueprint.cost)
 		{
 			Debug.Log(blueprint.prefab);
 			Debug.Log("Not enough money to build that!");
 			return;
 		}
 
-		dataManager.player.money -= blueprint.cost;
+		DataManager.Instance.player.money -= blueprint.cost;
 
 		GameObject _building = (GameObject)Instantiate(blueprint.prefab, GetBuildPosition(), Quaternion.identity);
 		building = _building;
 
 		buildingBlueprint = blueprint;
 
-		GameObject effect = (GameObject)Instantiate(buildManager.buildEffect, GetBuildPosition(), Quaternion.identity);
+		GameObject effect = (GameObject)Instantiate(BuildManager.Instance.buildEffect, GetBuildPosition(), Quaternion.identity);
 		Destroy(effect, 5f);
 
-		Debug.Log("Turret build!");
+		Debug.Log("Construct build!");
 	}
 
 	public void UpgradeBuilding()
 	{
-		if (dataManager.player.money < buildingBlueprint.upgradeCost)
+		if (DataManager.Instance.player.money < buildingBlueprint.upgradeCost)
 		{
 			Debug.Log("Not enough money to upgrade that!");
 			return;
 		}
 
-		dataManager.player.money -= buildingBlueprint.upgradeCost;
+		DataManager.Instance.player.money -= buildingBlueprint.upgradeCost;
 
 		//Get rid of the old turret
 		Destroy(building);
@@ -97,7 +97,7 @@ public class Node : MonoBehaviour
 		GameObject _building = (GameObject)Instantiate(buildingBlueprint.upgradedPrefab, GetBuildPosition(), Quaternion.identity);
 		building = _building;
 
-		GameObject effect = (GameObject)Instantiate(buildManager.buildEffect, GetBuildPosition(), Quaternion.identity);
+		GameObject effect = (GameObject)Instantiate(BuildManager.Instance.buildEffect, GetBuildPosition(), Quaternion.identity);
 		Destroy(effect, 5f);
 
 		isUpgraded = true;
@@ -108,9 +108,9 @@ public class Node : MonoBehaviour
 	public void SellBuilding()
 	{
 
-		dataManager.player.money += buildingBlueprint.GetSellAmount();
+		DataManager.Instance.player.money += buildingBlueprint.GetSellAmount();
 
-		GameObject effect = (GameObject)Instantiate(buildManager.sellEffect, GetBuildPosition(), Quaternion.identity);
+		GameObject effect = (GameObject)Instantiate(BuildManager.Instance.sellEffect, GetBuildPosition(), Quaternion.identity);
 		Destroy(effect, 5f);
 
 		Destroy(building);
@@ -126,14 +126,14 @@ public class Node : MonoBehaviour
 
         if (building != null)
         {
-            buildManager.SelectNode(this);
+			BuildManager.Instance.SelectNode(this);
             return;
         }
 
-        if (!buildManager.CanBuild)
+        if (!BuildManager.Instance.CanBuild)
             return;
-
-        BuildTurret(buildManager.GetTurretToBuild());
+		//ÅÍ·¿Áş°í ÃÊ±âÈ­
+        BuildTurret(BuildManager.Instance.GetTurretToBuild());
         building = null;
     }
 
@@ -142,10 +142,10 @@ public class Node : MonoBehaviour
         if (EventSystem.current.IsPointerOverGameObject())
             return;
 
-        if (!buildManager.CanBuild)
+        if (!BuildManager.Instance.CanBuild)
             return;
 
-        if (buildManager.HasMoney)
+        if (BuildManager.Instance.HasMoney)
         {
             rend.material.color = hoverColor;
         }
@@ -160,20 +160,20 @@ public class Node : MonoBehaviour
         rend.material.color = startColor;
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (changed) { return; }
-        if (other.tag == "Blue")
-        {
-            rend.material.color = blue;
-        }
-        else if (other.tag == "Red")
-        {
-            rend.material.color = red;
-        }
-    }
-    private void OnTriggerExit(Collider other)
-    {
-        rend.material.color = startColor;
-    }
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if (changed) { return; }
+    //    if (other.tag == "Blue")
+    //    {
+    //        rend.material.color = blue;
+    //    }
+    //    else if (other.tag == "Red")
+    //    {
+    //        rend.material.color = red;
+    //    }
+    //}
+    //private void OnTriggerExit(Collider other)
+    //{
+    //    rend.material.color = startColor;
+    //}
 }

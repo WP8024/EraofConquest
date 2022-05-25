@@ -1,18 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using BehaviorDesigner.Runtime;
+using BehaviorDesigner.Runtime.Tasks;
 
-public class IsRanged : MonoBehaviour
+[TaskCategory("Custom")]
+public class IsRanged : Conditional
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public SharedGameObject curObject;
 
     // Update is called once per frame
-    void Update()
+    public override TaskStatus OnUpdate()
     {
-        
+        if (curObject.Value.GetComponent<Unit>().projectilePrefab != null)
+        {
+            return TaskStatus.Success;
+        }
+        return TaskStatus.Failure;
     }
 }

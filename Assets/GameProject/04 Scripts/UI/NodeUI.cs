@@ -45,13 +45,13 @@ public class NodeUI : MonoBehaviour
 	public void Upgrade()
 	{
 		target.UpgradeBuilding();
-		BuildManager.instance.DeselectNode();
+		BuildManager.Instance.DeselectNode();
 	}
 
 	public void Sell()
 	{
 		target.SellBuilding();
-		BuildManager.instance.DeselectNode();
+		BuildManager.Instance.DeselectNode();
 	}
 
 }

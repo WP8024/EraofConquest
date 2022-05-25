@@ -21,7 +21,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] public TextMeshProUGUI enemyUnitText;
     [SerializeField] public TextMeshProUGUI enemyBuildingText;
     [SerializeField] public TextMeshProUGUI enemyMoneyText;
-    PlayerData playerdata,enemydata;
+    //PlayerData playerdata,enemydata;
   
  
     int curUnit, maxUnit, curBuilding, maxBuilding, money;
@@ -45,21 +45,21 @@ public class UIManager : MonoBehaviour
         ConstructPanel.SetActive(true);
         UnitUpgradPanel.SetActive(false);
        
-        playerdata = DataManager.instance.player;
-        enemydata = DataManager.instance.enemy;
+        //playerdata = DataManager.instance.player;
+        //enemydata = DataManager.instance.enemy;
 
     }
    
 
     public void Update()
     {
-        playerUnitText.text = playerdata.curUnit.ToString() + " / " + playerdata.maxUnit.ToString();
-        playerBuildingText.text = playerdata.curBuilding.ToString() + " / " + playerdata.maxBuilding.ToString();
-        playerMoneyText.text = playerdata.money.ToString();
+        playerUnitText.text = DataManager.Instance.player.curUnit.ToString() + " / " + DataManager.Instance.player.maxUnit.ToString();
+        playerBuildingText.text = DataManager.Instance.player.curBuilding.ToString() + " / " + DataManager.Instance.player.maxBuilding.ToString();
+        playerMoneyText.text = DataManager.Instance.player.money.ToString();
 
-        enemyUnitText.text = enemydata.curUnit.ToString() + " / " + enemydata.maxUnit.ToString();
-        enemyBuildingText.text = enemydata.curBuilding.ToString() + " / " + enemydata.maxBuilding.ToString();
-        enemyMoneyText.text = enemydata.money.ToString();
+        enemyUnitText.text = DataManager.Instance.enemy.curUnit.ToString() + " / " + DataManager.Instance.enemy.maxUnit.ToString();
+        enemyBuildingText.text = DataManager.Instance.enemy.curBuilding.ToString() + " / " + DataManager.Instance.enemy.maxBuilding.ToString();
+        enemyMoneyText.text = DataManager.Instance.enemy.money.ToString();
     }
 
 

@@ -22,7 +22,7 @@ public class FireProjectile : Action
         spawnedProjectile.transform.position = transform.position;
         spawnedProjectile.transform.LookAt(target.Value);
         spawnedProjectile.transform.parent = transform;
-
+        
         var projectile = spawnedProjectile.GetComponent<Projectile>();
         projectile.SetTarget(target.Value);
 
