@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2957167207097141957}
   - component: {fileID: 1097472714362793514}
   - component: {fileID: 8179779273088778295}
-  - component: {fileID: 2283399132211824159}
+  - component: {fileID: 8431423374594584852}
   m_Layer: 10
   m_Name: HousePrefab
   m_TagString: Red
@@ -197,7 +197,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &2283399132211824159
+--- !u!114 &8431423374594584852
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -210,13 +210,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startWhenEnabled: 1
-  asynchronousLoad: 0
-  pauseWhenDisabled: 0
-  restartWhenComplete: 0
+  asynchronousLoad: 1
+  pauseWhenDisabled: 1
+  restartWhenComplete: 1
   logTaskChanges: 0
   group: 0
   resetValuesOnRestart: 0
-  externalBehavior: {fileID: 11400000, guid: 629e5309b39d58946a6375a1f89ce69b, type: 2}
+  externalBehavior: {fileID: 11400000, guid: e0be9f1aab7c2d449af7397830d2c12b, type: 2}
   mBehaviorSource:
     behaviorName: Behavior
     behaviorDescription: 

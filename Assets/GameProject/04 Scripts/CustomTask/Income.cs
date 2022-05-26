@@ -6,7 +6,6 @@ using BehaviorDesigner.Runtime;
 public class Income : Action
 {
     public SharedGameObject curObject;
-    public SharedString targetTag;
     private Building building;
     // Start is called before the first frame update
 

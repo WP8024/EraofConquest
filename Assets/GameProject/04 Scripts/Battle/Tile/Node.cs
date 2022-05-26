@@ -40,23 +40,23 @@ public class Node : MonoBehaviour
 	}
 
 
-	public void OnClickNode()
-    {
-		if (EventSystem.current.IsPointerOverGameObject())
-			return;
+	//public void OnClickNode()
+ //   {
+	//	if (EventSystem.current.IsPointerOverGameObject())
+	//		return;
 
-		if (building != null)
-		{
-			BuildManager.Instance.SelectNode(this);
-			return;
-		}
+	//	if (building != null)
+	//	{
+	//		BuildManager.Instance.SelectNode(this);
+	//		return;
+	//	}
 
-		if (!BuildManager.Instance.CanBuild)
-			return;
+	//	if (!BuildManager.Instance.CanBuild)
+	//		return;
 
-		BuildTurret(BuildManager.Instance.GetTurretToBuild());
-		building = null;
-	}
+	//	BuildTurret(BuildManager.Instance.GetTurretToBuild());
+	//	building = null;
+	//}
 
 	void BuildTurret(BuildingBlueprint blueprint)
 	{
@@ -126,39 +126,39 @@ public class Node : MonoBehaviour
 
         if (building != null)
         {
-			BuildManager.Instance.SelectNode(this);
+            BuildManager.Instance.SelectNode(this);
             return;
         }
 
         if (!BuildManager.Instance.CanBuild)
             return;
-		//≈Õ∑ø¡˛∞Ì √ ±‚»≠
+        //≈Õ∑ø¡˛∞Ì √ ±‚»≠
         BuildTurret(BuildManager.Instance.GetTurretToBuild());
         building = null;
     }
 
-    void OnMouseEnter()
-    {
-        if (EventSystem.current.IsPointerOverGameObject())
-            return;
+    //void OnMouseEnter()
+    //{
+    //    if (EventSystem.current.IsPointerOverGameObject())
+    //        return;
 
-        if (!BuildManager.Instance.CanBuild)
-            return;
+    //    if (!BuildManager.Instance.CanBuild)
+    //        return;
 
-        if (BuildManager.Instance.HasMoney)
-        {
-            rend.material.color = hoverColor;
-        }
-        else
-        {
-            rend.material.color = notEnoughMoneyColor;
-        }
-    }
+    //    if (BuildManager.Instance.HasMoney)
+    //    {
+    //        rend.material.color = hoverColor;
+    //    }
+    //    else
+    //    {
+    //        rend.material.color = notEnoughMoneyColor;
+    //    }
+    //}
 
-    void OnMouseExit()
-    {
-        rend.material.color = startColor;
-    }
+    //void OnMouseExit()
+    //{
+    //    rend.material.color = startColor;
+    //}
 
     //private void OnTriggerEnter(Collider other)
     //{

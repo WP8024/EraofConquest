@@ -39,6 +39,7 @@ public class Building : ObjectBody
     public override void Awake()
     {
         base.Awake();
+
     }
 
     public override void Start()
@@ -51,6 +52,15 @@ public class Building : ObjectBody
         if (projectilePrefab != null)
         {
             isAttackable = true;
+        }
+
+        if (CompareTag("Red"))
+        {
+            DataManager.Instance.enemy.curBuilding++;
+        }
+        else
+        {
+            DataManager.Instance.player.curBuilding++;
         }
         //datamanager = DataManager.instance;
         // StartCoroutine(Search());
@@ -134,9 +144,16 @@ public class Building : ObjectBody
     public bool createUnit()
     {
         if (!isSpawner) return false;
+        else if(transform.tag == "Blue" && DataManager.Instance.player.curUnit >= DataManager.Instance.player.maxUnit)
+        {
+            return false;
+        }
+        else if(transform.tag == "Red" && DataManager.Instance.enemy.curUnit >= DataManager.Instance.enemy.maxUnit)
+        {
+            return false;
+        }
         else
         {
-
 
             int n = Random.RandomRange(0, units.Length);
 
@@ -169,12 +186,21 @@ public class Building : ObjectBody
        
 
     }
-
+     void OnDestroy()
+    {
+        if(CompareTag("Red")){
+            DataManager.Instance.enemy.curBuilding--;
+        }
+        else
+        {
+            DataManager.Instance.player.curBuilding--;
+        }
+    }
     //public void SetColor()
     //{
     //    Collider curcollider = transform.GetComponent<Collider>();
 
     //    //Physics.OverlapBox(transform.position,)
     //}
-    
+
 }

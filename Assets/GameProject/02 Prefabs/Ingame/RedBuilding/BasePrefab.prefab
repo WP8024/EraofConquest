@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 3923973388354315097}
   - component: {fileID: 731209964685859349}
   - component: {fileID: 2028571665616620082}
-  - component: {fileID: 108541515}
   - component: {fileID: 3596545983146989392}
+  - component: {fileID: 1545827780534234106}
   m_Layer: 10
   m_Name: BasePrefab
   m_TagString: Red
@@ -105,46 +105,6 @@ MonoBehaviour:
   target: {fileID: 0}
   isSpawner: 0
   isAttackable: 0
---- !u!114 &108541515
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 951310310897153968}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d7b55c7ecdb49a4a89fa5e6f9022861, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startWhenEnabled: 1
-  asynchronousLoad: 0
-  pauseWhenDisabled: 0
-  restartWhenComplete: 0
-  logTaskChanges: 0
-  group: 0
-  resetValuesOnRestart: 0
-  externalBehavior: {fileID: 11400000, guid: 629e5309b39d58946a6375a1f89ce69b, type: 2}
-  mBehaviorSource:
-    behaviorName: Behavior
-    behaviorDescription: 
-    mTaskData:
-      types: []
-      parentIndex: 
-      startIndex: 
-      variableStartIndex: 
-      JSONSerialization: 
-      fieldSerializationData:
-        typeName: []
-        fieldNameHash: 
-        startIndex: 
-        dataPosition: 
-        unityObjects: []
-        byteData: 
-        byteDataArray: 
-      Version: 
-  gizmoViewMode: 2
-  showBehaviorDesignerGizmo: 1
 --- !u!82 &3596545983146989392
 AudioSource:
   m_ObjectHideFlags: 0
@@ -241,6 +201,46 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1545827780534234106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 951310310897153968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d7b55c7ecdb49a4a89fa5e6f9022861, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startWhenEnabled: 1
+  asynchronousLoad: 1
+  pauseWhenDisabled: 1
+  restartWhenComplete: 1
+  logTaskChanges: 0
+  group: 0
+  resetValuesOnRestart: 0
+  externalBehavior: {fileID: 11400000, guid: 154496571d3e5b040887c8abb50fa58f, type: 2}
+  mBehaviorSource:
+    behaviorName: Behavior
+    behaviorDescription: 
+    mTaskData:
+      types: []
+      parentIndex: 
+      startIndex: 
+      variableStartIndex: 
+      JSONSerialization: 
+      fieldSerializationData:
+        typeName: []
+        fieldNameHash: 
+        startIndex: 
+        dataPosition: 
+        unityObjects: []
+        byteData: 
+        byteDataArray: 
+      Version: 
+  gizmoViewMode: 2
+  showBehaviorDesignerGizmo: 1
 --- !u!1 &8477547470837593884
 GameObject:
   m_ObjectHideFlags: 0

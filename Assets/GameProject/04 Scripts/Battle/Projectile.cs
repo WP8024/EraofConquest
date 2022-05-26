@@ -18,7 +18,12 @@ public class Projectile : MonoBehaviour
 
     void Start()
     {
-       
+        if (target == null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
         if (flash != null)
         {
             var flashInstance = Instantiate(flash, transform.position, Quaternion.identity);
@@ -35,7 +40,10 @@ public class Projectile : MonoBehaviour
             }
             
         }
-        transform.LookAt(target.transform);
+        if (target != null)
+        {
+            transform.LookAt(target.transform);
+        }
         Destroy(gameObject, lifetime);
 
     }
@@ -71,6 +79,10 @@ public class Projectile : MonoBehaviour
 
     public void SetTarget(Transform _target)
     {
+        if(_target == null) {
+            Destroy(gameObject);
+            return;
+        }
         target = _target.GetComponent<ObjectBody>();
     }
 

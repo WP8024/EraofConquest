@@ -48,6 +48,12 @@ public class DataManager : MonoBehaviour
         //씬이 바뀌어도 사라지면 안되기때문에 이동
         DontDestroyOnLoad(this.gameObject);
     }
+    public void Upgrade()
+    {
+        player.maxUnit = player.up_MaxUnit * 10;
+        player.maxBuilding = player.up_MaxBuilding * 10; 
+    }
+
     public void SetUP()
     {
         int index = 0;

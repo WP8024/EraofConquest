@@ -5,20 +5,22 @@ using BehaviorDesigner.Runtime.Tasks;
 [TaskCategory ("Custom")]
 public class FireProjectile : Action
 {
-    public GameObject projectilePrefab;
+    public SharedGameObject curObject;
+    public Projectile projectilePrefab;
     public SharedTransform target;
     // Use this for initialization
 
     private Collider col;
     public override void OnAwake()
     {
+       projectilePrefab = curObject.Value.GetComponent<Building>().projectilePrefab;
         col = GetComponent<Collider>();
     }
 
     // OnUpdate will return success in one frame after it has created the projectile
     public override TaskStatus OnUpdate()
     {
-        var spawnedProjectile = GameObject.Instantiate(projectilePrefab) as GameObject;
+        var spawnedProjectile = Object.Instantiate(projectilePrefab);
         spawnedProjectile.transform.position = transform.position;
         spawnedProjectile.transform.LookAt(target.Value);
         spawnedProjectile.transform.parent = transform;

@@ -127,7 +127,7 @@ MonoBehaviour:
   spawnPoint: {fileID: 0}
   turngold: 100
   muzzle: {fileID: 5755229384980668000}
-  projectilePrefab: {fileID: 0}
+  projectilePrefab: {fileID: 7859139933576005402, guid: 0269dbebdef354c4884b5dbebdd24f0b, type: 3}
   msBetweenShots: 100
   muzzleVelocity: 35
   target: {fileID: 0}
@@ -242,9 +242,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startWhenEnabled: 1
-  asynchronousLoad: 0
-  pauseWhenDisabled: 0
-  restartWhenComplete: 0
+  asynchronousLoad: 1
+  pauseWhenDisabled: 1
+  restartWhenComplete: 1
   logTaskChanges: 0
   group: 0
   resetValuesOnRestart: 0

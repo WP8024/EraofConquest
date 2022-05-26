@@ -29,8 +29,8 @@ public class Unit : ObjectBody
     public float attackDelay = 1;
     float timer = 0f;
 
-    private bool goingToClickedPos;
-    private float defaultStoppingDistance;
+    public bool goingToClickedPos;
+    public float defaultStoppingDistance;
  
     [Header("target info")]
     public ObjectBody currentTarget; //타겟 캐릭터
@@ -57,7 +57,7 @@ public class Unit : ObjectBody
     private AudioSource audio;
 
 
-    private GameObject unitMarker;
+    public GameObject unitMarker;
 
     public override void Setup(ObjectBody obj, int id)
     {
@@ -83,6 +83,8 @@ public class Unit : ObjectBody
         //health.SetActive(false);
         //healthbar.GetComponent<Slider>().maxValue = currentHP;
 
+
+
         moveRotation = transform.rotation;
         //StartCoroutine(Wait());
         nextPos = getRandomPosition();
@@ -90,8 +92,17 @@ public class Unit : ObjectBody
         agent.stoppingDistance = attackRange - 2;
         agent.speed = moveSpeed;
 
+        if (CompareTag("Red"))
+        {
+            DataManager.Instance.enemy.curUnit++;
+        }
+        else
+        {
+            DataManager.Instance.player.curUnit++;
+            UnitController.Instance.UnitList.Add(this);
+        }
 
-       
+
     }
     public void SetUP(Faction _faction,UnitData data)
     {
@@ -443,71 +454,30 @@ public class Unit : ObjectBody
 
     }
 
-
-    //public void TakeDamage(Unit _attackerCharacter)
-    //{
-    //    //Debug.Log("TakeDamage" + _attackerCharacter.attackDamage);
-    //    health -= _attackerCharacter.attackDamage;
-
-    //    //this.GetComponent<CharacterAnimationEx>().SetDamage(true);
-    //    if (health <= 0)
-    //    {
-    //        Death();
-    //    }
-
-    //}
-    //public void OnAttack()
-    //{
-    //    if (currentTarget == null)
-    //    {
-    //        unitAnimation.SetAttack(false);
-    //        return;
-    //    }
-    
-    //    if (projectilePrefab == null)
-    //    {
-    //        currentTarget.TakeDamage(attackDamage);
-    //    }
-    //    else//발사체 존재시
-    //    {
-    //        Debug.Log("화살생성");
-    //        //등록된 발사체 생성
-    //        GameObject projectile = Instantiate(projectilePrefab);
-    //        //시작지점에서 발사체 위치
-    //        projectile.transform.position = projectileStart.transform.position;
-    //        //발사체에 타겟등록
-    //        projectile.GetComponent<Projectile>().Init(currentTarget);
-
-    //        currentTarget.TakeDamage(attackDamage);
-    //    }
-    //}
-
-    //public void OnAttackFinish()
-    //{
-        
-    //    if (currentTarget == null)
-    //    {
-    //        unitAnimation.SetAttack(false);
-    //        return;
-    //    }
-    
-        
-    //}
-
-    //유닛선택
-    
+    void OnDestroy()
+    {
+        if (CompareTag("Red"))
+        {
+            DataManager.Instance.enemy.curUnit--;
+        }
+        else
+        {
+            DataManager.Instance.player.curUnit--;
+            UnitController.Instance.UnitList.Remove(this);
+        }
+    }
     public void SelectUnit()
     {
+        selected = true;
         selectedMarker.SetActive(true);
-        Debug.Log("SelectUnit");
     }
     public void DeselectUnit()
     {
         selectedMarker.SetActive(false);
-        Debug.Log("deselectUnit");
     }
     public void SelectUnitMove(Vector3 pos)
     {
+        Debug.Log("selectUnitMove");
         if (selected)
         {
             currentTarget = null;

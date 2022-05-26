@@ -1432,7 +1432,7 @@ MonoBehaviour:
   nextPos: {x: 0, y: 0, z: 0}
   randomPos: {x: 0, y: 0, z: 0}
   castleAttackPosition: {x: 0, y: 0, z: 0}
-  projectilePrefab: {fileID: 0}
+  projectilePrefab: {fileID: 1519322442116508, guid: 2ad01737a079ffa4dba46f20712e5807, type: 3}
   projectileStart: {fileID: 5216540024420559899}
 --- !u!114 &609239615
 MonoBehaviour:

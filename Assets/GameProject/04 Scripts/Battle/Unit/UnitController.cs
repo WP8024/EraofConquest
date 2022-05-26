@@ -4,7 +4,24 @@ using UnityEngine;
 
 public class UnitController : MonoBehaviour
 {
-
+    private static UnitController instance;
+    public static UnitController Instance
+    {
+        get
+        {
+            var obj = FindObjectOfType<UnitController>();
+            if (obj != null)
+            {
+                instance = obj;
+            }
+            else
+            {
+                var newObj = new GameObject().AddComponent<UnitController>();
+                instance = newObj;
+            }
+            return instance;
+        }
+    }
 
     public List<Unit> selectedUnitList;
     public List<Unit> UnitList { private set; get; }
@@ -12,6 +29,18 @@ public class UnitController : MonoBehaviour
     private void Awake()
     {
         selectedUnitList = new List<Unit>();
+        UnitList = new List<Unit>();
+
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else if (instance != this)
+        {
+            Destroy(instance.gameObject);
+        }
+        DontDestroyOnLoad(this.gameObject);
+
     }
 
     public void ClickSelectUnit(Unit newUnit)

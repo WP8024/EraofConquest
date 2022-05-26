@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Shop : MonoBehaviour
 {
     public BuildingBlueprint[] building;
     //BuildManager buildManager;
 
+    public TextMeshProUGUI[] itemPriceText;
     public int[] itemPrice;
     //DataManager dataManager;
 
@@ -39,30 +41,36 @@ public class Shop : MonoBehaviour
             case 0:
                 DataManager.Instance.player.up_MeleeUnit++;
                 itemPrice[key] = DataManager.Instance.player.up_MeleeUnit * 1000;
+                itemPriceText[key].text = itemPrice[key].ToString();
                 break;
             case 1:
                 Debug.Log("key 1 input");
                 DataManager.Instance.player.up_RangeUnit++;
                 itemPrice[key] = DataManager.Instance.player.up_RangeUnit * 1000;
+                itemPriceText[key].text = itemPrice[key].ToString();
                 break;
             case 2:
                 DataManager.Instance.player.up_MagicUnit++;
                 itemPrice[key] = DataManager.Instance.player.up_MagicUnit * 1000;
+                itemPriceText[key].text = itemPrice[key].ToString();
                 break;
             case 3:
                 DataManager.Instance.player.up_CavalryUnit++;
                 itemPrice[key] = DataManager.Instance.player.up_CavalryUnit * 1000;
+                itemPriceText[key].text = itemPrice[key].ToString();
                 break;
             case 4:
                 DataManager.Instance.player.up_MaxUnit++;
                 itemPrice[key] = DataManager.Instance.player.up_MaxUnit * 1000;
+                itemPriceText[key].text = itemPrice[key].ToString();
                 break;
             case 5:
                 DataManager.Instance.player.up_MaxBuilding++;
                 itemPrice[key] = DataManager.Instance.player.up_MaxBuilding * 1000;
+                itemPriceText[key].text = itemPrice[key].ToString();
                 break;
         }
-        //DataManager.Instance.Upgrade();
+        DataManager.Instance.Upgrade();
 
     }
     

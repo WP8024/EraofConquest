@@ -95,8 +95,8 @@ MonoBehaviour:
   units: []
   spawnPoint: {fileID: 0}
   turngold: 100
-  muzzle: {fileID: 0}
-  projectilePrefab: {fileID: 0}
+  muzzle: {fileID: 8656499102640402945}
+  projectilePrefab: {fileID: 7859139933576005402, guid: 0269dbebdef354c4884b5dbebdd24f0b, type: 3}
   msBetweenShots: 100
   muzzleVelocity: 35
   target: {fileID: 0}
@@ -211,9 +211,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startWhenEnabled: 1
-  asynchronousLoad: 0
-  pauseWhenDisabled: 0
-  restartWhenComplete: 0
+  asynchronousLoad: 1
+  pauseWhenDisabled: 1
+  restartWhenComplete: 1
   logTaskChanges: 0
   group: 0
   resetValuesOnRestart: 0
@@ -226,7 +226,7 @@ MonoBehaviour:
       parentIndex: 
       startIndex: 
       variableStartIndex: 
-      JSONSerialization: 
+      JSONSerialization: '{"Variables":[{"Type":"BehaviorDesigner.Runtime.SharedTransform","Name":"target","IsShared":true},{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":"isSetup","IsShared":true,"BooleanmValue":false},{"Type":"BehaviorDesigner.Runtime.SharedGameObject","Name":"curGameObject","IsShared":true},{"Type":"BehaviorDesigner.Runtime.SharedString","Name":"targetTag","IsShared":true},{"Type":"BehaviorDesigner.Runtime.SharedString","Name":"curTag","IsShared":true}]}'
       fieldSerializationData:
         typeName: []
         fieldNameHash: 
@@ -235,7 +235,7 @@ MonoBehaviour:
         unityObjects: []
         byteData: 
         byteDataArray: 
-      Version: 
+      Version: 1.7.2
   gizmoViewMode: 2
   showBehaviorDesignerGizmo: 1
 --- !u!1 &8656499102640402946
