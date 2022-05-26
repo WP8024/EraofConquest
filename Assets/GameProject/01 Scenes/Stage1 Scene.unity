@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 6da1bfca2d0d36b4fa965fb57a01fe8a, type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -27873,6 +27873,9 @@ MonoBehaviour:
   layerUnit:
     serializedVersion: 2
     m_Bits: 512
+  layerGround:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!4 &681121746
 Transform:
   m_ObjectHideFlags: 0
@@ -29058,6 +29061,9 @@ MonoBehaviour:
   layerUnit:
     serializedVersion: 2
     m_Bits: 0
+  layerGround:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &707723845
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29071,7 +29077,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerBase: {fileID: 948056345}
-  TargetBase: {fileID: 202585504}
+  TargetBase: {fileID: 1564648280}
   gameOverUI: {fileID: 73653780}
   completeLevelUI: {fileID: 560100091}
   timerText: {fileID: 0}
@@ -53957,6 +53963,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6457278774507909214, guid: 14438365b41af714faea00b6fcf58552, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 14438365b41af714faea00b6fcf58552, type: 3}
 --- !u!4 &1295774315 stripped
@@ -65180,6 +65190,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d853c5ba406ab2449b57a72ebcf7e84b, type: 3}
+--- !u!1 &1564648280 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1854611806373660121, guid: 14438365b41af714faea00b6fcf58552, type: 3}
+  m_PrefabInstance: {fileID: 1295774314}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1568039322
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -83847,7 +83862,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1949692639
 Transform:
   m_ObjectHideFlags: 0
